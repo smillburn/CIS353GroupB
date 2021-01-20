@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "Z:\\CIS353 - intermediate C#\\group\\CIS353GroupB\\CIS353GroupB\\CIS353GroupB\\CIS353GroupB.csproj",
+      "projectUniqueName": "C:\\Users\\Garrett\\Source\\Repos\\smillburn\\CIS353GroupB\\CIS353GroupB\\CIS353GroupB\\CIS353GroupB.csproj",
       "projectName": "CIS353GroupB",
-      "projectPath": "Z:\\CIS353 - intermediate C#\\group\\CIS353GroupB\\CIS353GroupB\\CIS353GroupB\\CIS353GroupB.csproj",
+      "projectPath": "C:\\Users\\Garrett\\Source\\Repos\\smillburn\\CIS353GroupB\\CIS353GroupB\\CIS353GroupB\\CIS353GroupB.csproj",
       "packagesPath": "C:\\Users\\Garrett\\.nuget\\packages\\",
-      "outputPath": "Z:\\CIS353 - intermediate C#\\group\\CIS353GroupB\\CIS353GroupB\\CIS353GroupB\\obj\\",
+      "outputPath": "C:\\Users\\Garrett\\Source\\Repos\\smillburn\\CIS353GroupB\\CIS353GroupB\\CIS353GroupB\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Garrett\\AppData\\Roaming\\NuGet\\NuGet.Config",
