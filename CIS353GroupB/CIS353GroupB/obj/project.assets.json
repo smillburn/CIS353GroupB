@@ -8,19 +8,19 @@
     ".NETCoreApp,Version=v3.1": []
   },
   "packageFolders": {
-    "C:\\Users\\millb\\.nuget\\packages\\": {}
+    "C:\\Users\\Garrett\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Repo\\CIS353GroupB\\CIS353GroupB\\CIS353GroupB\\CIS353GroupB.csproj",
+      "projectUniqueName": "Z:\\CIS353 - intermediate C#\\group\\CIS353GroupB\\CIS353GroupB\\CIS353GroupB\\CIS353GroupB.csproj",
       "projectName": "CIS353GroupB",
-      "projectPath": "D:\\Repo\\CIS353GroupB\\CIS353GroupB\\CIS353GroupB\\CIS353GroupB.csproj",
-      "packagesPath": "C:\\Users\\millb\\.nuget\\packages\\",
-      "outputPath": "D:\\Repo\\CIS353GroupB\\CIS353GroupB\\CIS353GroupB\\obj\\",
+      "projectPath": "Z:\\CIS353 - intermediate C#\\group\\CIS353GroupB\\CIS353GroupB\\CIS353GroupB\\CIS353GroupB.csproj",
+      "packagesPath": "C:\\Users\\Garrett\\.nuget\\packages\\",
+      "outputPath": "Z:\\CIS353 - intermediate C#\\group\\CIS353GroupB\\CIS353GroupB\\CIS353GroupB\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\millb\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Garrett\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -32,7 +32,6 @@
       },
       "frameworks": {
         "netcoreapp3.1": {
-          "targetAlias": "netcoreapp3.1",
           "projectReferences": {}
         }
       },
@@ -44,7 +43,6 @@
     },
     "frameworks": {
       "netcoreapp3.1": {
-        "targetAlias": "netcoreapp3.1",
         "imports": [
           "net461",
           "net462",
@@ -60,7 +58,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.101\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.401\\RuntimeIdentifierGraph.json"
       }
     }
   }
