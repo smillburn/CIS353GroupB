@@ -50,10 +50,21 @@ namespace CIS353GroupB
 
         public Player(string fname, string lname, int handi, int lgame, int rank)
         {
+            firstName = fname;
+            lastName = lname;
+            handicap = handi;
+            lastGameScore = lgame;
+            teamRank = rank;
             // Potentially set rank based on other players handicaps
         }
 
         // Methods
+        // Used to display player information
+        public string[] toStringArray()
+        {
+            return new string[5] { firstName, lastName, handicap.ToString(), lastGameScore.ToString(), teamRank.ToString() };
+        }
+
         public int CompareTo(Player other) //sets the compareto interface to compare players handicaps for sorting
         {
             return this.Handicap.CompareTo(other.Handicap);

@@ -8,6 +8,7 @@ namespace CIS353GroupB
 {
     static class Program
     {
+
         /// <summary>
         ///  The main entry point for the application.
         /// </summary>
