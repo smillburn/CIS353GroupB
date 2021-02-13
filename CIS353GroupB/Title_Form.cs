@@ -25,7 +25,7 @@ namespace CIS353GroupB
             /*Need determine how to persist data across multiple forms
              * seperate static class and close title form? use title form?
              * Henry Flores: 12Feb21 */
-            this.Close(); //close Title form and open CreateTeams form
+            //this.Close(); //close Title form and open CreateTeams form
             CreateTeams_Form createTeams = new CreateTeams_Form();
             createTeams.Show();
         }
