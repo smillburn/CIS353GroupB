@@ -30,7 +30,7 @@ namespace CIS353GroupB
         private void InitializeComponent()
         {
             this.CreateTeamsTitle_label = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.TeamNum_textBox = new System.Windows.Forms.TextBox();
             this.TeamNum_label = new System.Windows.Forms.Label();
             this.P1_label = new System.Windows.Forms.Label();
             this.P1_Fname_textBox = new System.Windows.Forms.TextBox();
@@ -60,6 +60,7 @@ namespace CIS353GroupB
             this.Clear_btn = new System.Windows.Forms.Button();
             this.Main_btn = new System.Windows.Forms.Button();
             this.Create_btn = new System.Windows.Forms.Button();
+            this.Debug_btn = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // CreateTeamsTitle_label
@@ -71,12 +72,12 @@ namespace CIS353GroupB
             this.CreateTeamsTitle_label.TabIndex = 0;
             this.CreateTeamsTitle_label.Text = "Create New Teams";
             // 
-            // textBox1
+            // TeamNum_textBox
             // 
-            this.textBox1.Location = new System.Drawing.Point(423, 42);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(25, 23);
-            this.textBox1.TabIndex = 1;
+            this.TeamNum_textBox.Location = new System.Drawing.Point(423, 42);
+            this.TeamNum_textBox.Name = "TeamNum_textBox";
+            this.TeamNum_textBox.Size = new System.Drawing.Size(25, 23);
+            this.TeamNum_textBox.TabIndex = 1;
             // 
             // TeamNum_label
             // 
@@ -323,11 +324,22 @@ namespace CIS353GroupB
             this.Create_btn.UseVisualStyleBackColor = true;
             this.Create_btn.Click += new System.EventHandler(this.Create_btn_Click);
             // 
+            // Debug_btn
+            // 
+            this.Debug_btn.Location = new System.Drawing.Point(536, 398);
+            this.Debug_btn.Name = "Debug_btn";
+            this.Debug_btn.Size = new System.Drawing.Size(75, 23);
+            this.Debug_btn.TabIndex = 31;
+            this.Debug_btn.Text = "Debug";
+            this.Debug_btn.UseVisualStyleBackColor = true;
+            //this.Debug_btn.Click += new System.EventHandler(this.Debug_btn_Click);
+            // 
             // CreateTeams_Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.Debug_btn);
             this.Controls.Add(this.Create_btn);
             this.Controls.Add(this.Main_btn);
             this.Controls.Add(this.Clear_btn);
@@ -357,7 +369,7 @@ namespace CIS353GroupB
             this.Controls.Add(this.P1_Fname_textBox);
             this.Controls.Add(this.P1_label);
             this.Controls.Add(this.TeamNum_label);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.TeamNum_textBox);
             this.Controls.Add(this.CreateTeamsTitle_label);
             this.Name = "CreateTeams_Form";
             this.Text = "CreateTeam_Form";
@@ -369,7 +381,7 @@ namespace CIS353GroupB
         #endregion
 
         private System.Windows.Forms.Label CreateTeamsTitle_label;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox TeamNum_textBox;
         private System.Windows.Forms.Label TeamNum_label;
         private System.Windows.Forms.Label P1_label;
         private System.Windows.Forms.TextBox P1_Fname_textBox;
@@ -399,5 +411,6 @@ namespace CIS353GroupB
         private System.Windows.Forms.Button Clear_btn;
         private System.Windows.Forms.Button Main_btn;
         private System.Windows.Forms.Button Create_btn;
+        private System.Windows.Forms.Button Debug_btn;
     }
 }

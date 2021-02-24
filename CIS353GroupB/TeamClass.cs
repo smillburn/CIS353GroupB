@@ -23,6 +23,14 @@ namespace CIS353GroupB
 			get => rank;
 			set => rank = value;
         }
+        /*added a default team class constructor which will call the default player class constructor
+         * for each of the array indexs of the player array
+         * Henry Flores: 23Feb21 */
+        public Team()
+        {
+            for (int x = 0; x < players.Length; x++)
+                players[x] = new Player();
+        }
 
 		public void updatePlayer(Player player, int index)
         {

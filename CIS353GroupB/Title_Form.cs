@@ -15,6 +15,11 @@ namespace CIS353GroupB
         //private static List<Team> teams = new List<Team>();
         //Commented above line: Henry Flores: 12Feb21
 
+        private void Title_Form_Load(object sender, EventArgs e)
+        {
+            
+        }
+
         public Title_Form()
         {
             InitializeComponent();
@@ -27,7 +32,8 @@ namespace CIS353GroupB
              * Henry Flores: 12Feb21 */
             //this.Close(); //close Title form and open CreateTeams form
             CreateTeams_Form createTeams = new CreateTeams_Form();
-            createTeams.Show();
+            createTeams.ShowDialog();
+            
         }
 
         private void Import_btn_Click(object sender, EventArgs e)
@@ -92,5 +98,7 @@ namespace CIS353GroupB
         {
             Application.Exit();
         }
+
+        
     }
 }
