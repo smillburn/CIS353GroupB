@@ -101,7 +101,6 @@ namespace CIS353GroupB
             // 
             this.P1_Fname_textBox.Location = new System.Drawing.Point(22, 134);
             this.P1_Fname_textBox.Name = "P1_Fname_textBox";
-            this.P1_Fname_textBox.PlaceholderText = "First Name";
             this.P1_Fname_textBox.Size = new System.Drawing.Size(100, 23);
             this.P1_Fname_textBox.TabIndex = 4;
             // 
@@ -109,7 +108,6 @@ namespace CIS353GroupB
             // 
             this.P1_Lname_textBox.Location = new System.Drawing.Point(128, 134);
             this.P1_Lname_textBox.Name = "P1_Lname_textBox";
-            this.P1_Lname_textBox.PlaceholderText = "Last Name";
             this.P1_Lname_textBox.Size = new System.Drawing.Size(100, 23);
             this.P1_Lname_textBox.TabIndex = 5;
             // 
@@ -117,7 +115,6 @@ namespace CIS353GroupB
             // 
             this.P1_hCap_textBox.Location = new System.Drawing.Point(22, 163);
             this.P1_hCap_textBox.Name = "P1_hCap_textBox";
-            this.P1_hCap_textBox.PlaceholderText = "Handicap";
             this.P1_hCap_textBox.Size = new System.Drawing.Size(100, 23);
             this.P1_hCap_textBox.TabIndex = 6;
             // 
@@ -125,7 +122,6 @@ namespace CIS353GroupB
             // 
             this.P1_lastGame_textBox.Location = new System.Drawing.Point(128, 163);
             this.P1_lastGame_textBox.Name = "P1_lastGame_textBox";
-            this.P1_lastGame_textBox.PlaceholderText = "Last Game Score";
             this.P1_lastGame_textBox.Size = new System.Drawing.Size(100, 23);
             this.P1_lastGame_textBox.TabIndex = 7;
             // 
@@ -133,7 +129,6 @@ namespace CIS353GroupB
             // 
             this.P1_teamRank_textBox.Location = new System.Drawing.Point(234, 163);
             this.P1_teamRank_textBox.Name = "P1_teamRank_textBox";
-            this.P1_teamRank_textBox.PlaceholderText = "Team Rank";
             this.P1_teamRank_textBox.Size = new System.Drawing.Size(100, 23);
             this.P1_teamRank_textBox.TabIndex = 8;
             // 
@@ -150,7 +145,6 @@ namespace CIS353GroupB
             // 
             this.P2_teamRank_textBox.Location = new System.Drawing.Point(670, 163);
             this.P2_teamRank_textBox.Name = "P2_teamRank_textBox";
-            this.P2_teamRank_textBox.PlaceholderText = "Team Rank";
             this.P2_teamRank_textBox.Size = new System.Drawing.Size(100, 23);
             this.P2_teamRank_textBox.TabIndex = 14;
             // 
@@ -158,7 +152,6 @@ namespace CIS353GroupB
             // 
             this.P2_lastGame_textBox.Location = new System.Drawing.Point(564, 163);
             this.P2_lastGame_textBox.Name = "P2_lastGame_textBox";
-            this.P2_lastGame_textBox.PlaceholderText = "Last Game Score";
             this.P2_lastGame_textBox.Size = new System.Drawing.Size(100, 23);
             this.P2_lastGame_textBox.TabIndex = 13;
             // 
@@ -166,7 +159,6 @@ namespace CIS353GroupB
             // 
             this.P2_hCap_textBox.Location = new System.Drawing.Point(458, 163);
             this.P2_hCap_textBox.Name = "P2_hCap_textBox";
-            this.P2_hCap_textBox.PlaceholderText = "Handicap";
             this.P2_hCap_textBox.Size = new System.Drawing.Size(100, 23);
             this.P2_hCap_textBox.TabIndex = 12;
             // 
@@ -174,7 +166,6 @@ namespace CIS353GroupB
             // 
             this.P2_Lname_textBox.Location = new System.Drawing.Point(564, 134);
             this.P2_Lname_textBox.Name = "P2_Lname_textBox";
-            this.P2_Lname_textBox.PlaceholderText = "Last Name";
             this.P2_Lname_textBox.Size = new System.Drawing.Size(100, 23);
             this.P2_Lname_textBox.TabIndex = 11;
             // 
@@ -182,7 +173,6 @@ namespace CIS353GroupB
             // 
             this.P2_Fname_textBox.Location = new System.Drawing.Point(458, 134);
             this.P2_Fname_textBox.Name = "P2_Fname_textBox";
-            this.P2_Fname_textBox.PlaceholderText = "First Name";
             this.P2_Fname_textBox.Size = new System.Drawing.Size(100, 23);
             this.P2_Fname_textBox.TabIndex = 10;
             // 
@@ -190,7 +180,6 @@ namespace CIS353GroupB
             // 
             this.P4_teamRank_textBox.Location = new System.Drawing.Point(670, 288);
             this.P4_teamRank_textBox.Name = "P4_teamRank_textBox";
-            this.P4_teamRank_textBox.PlaceholderText = "Team Rank";
             this.P4_teamRank_textBox.Size = new System.Drawing.Size(100, 23);
             this.P4_teamRank_textBox.TabIndex = 26;
             // 
@@ -198,7 +187,6 @@ namespace CIS353GroupB
             // 
             this.P4_lastGame_textBox.Location = new System.Drawing.Point(564, 288);
             this.P4_lastGame_textBox.Name = "P4_lastGame_textBox";
-            this.P4_lastGame_textBox.PlaceholderText = "Last Game Score";
             this.P4_lastGame_textBox.Size = new System.Drawing.Size(100, 23);
             this.P4_lastGame_textBox.TabIndex = 25;
             // 
@@ -206,7 +194,6 @@ namespace CIS353GroupB
             // 
             this.P4_hCap_textBox.Location = new System.Drawing.Point(458, 288);
             this.P4_hCap_textBox.Name = "P4_hCap_textBox";
-            this.P4_hCap_textBox.PlaceholderText = "Handicap";
             this.P4_hCap_textBox.Size = new System.Drawing.Size(100, 23);
             this.P4_hCap_textBox.TabIndex = 24;
             // 
@@ -214,7 +201,6 @@ namespace CIS353GroupB
             // 
             this.P4_Lname_textBox.Location = new System.Drawing.Point(564, 259);
             this.P4_Lname_textBox.Name = "P4_Lname_textBox";
-            this.P4_Lname_textBox.PlaceholderText = "Last Name";
             this.P4_Lname_textBox.Size = new System.Drawing.Size(100, 23);
             this.P4_Lname_textBox.TabIndex = 23;
             // 
@@ -222,7 +208,6 @@ namespace CIS353GroupB
             // 
             this.P4_Fname_textBox.Location = new System.Drawing.Point(458, 259);
             this.P4_Fname_textBox.Name = "P4_Fname_textBox";
-            this.P4_Fname_textBox.PlaceholderText = "First Name";
             this.P4_Fname_textBox.Size = new System.Drawing.Size(100, 23);
             this.P4_Fname_textBox.TabIndex = 22;
             // 
@@ -239,7 +224,6 @@ namespace CIS353GroupB
             // 
             this.P3_teamRank_textBox.Location = new System.Drawing.Point(234, 288);
             this.P3_teamRank_textBox.Name = "P3_teamRank_textBox";
-            this.P3_teamRank_textBox.PlaceholderText = "Team Rank";
             this.P3_teamRank_textBox.Size = new System.Drawing.Size(100, 23);
             this.P3_teamRank_textBox.TabIndex = 20;
             // 
@@ -247,7 +231,6 @@ namespace CIS353GroupB
             // 
             this.P3_lastGame_textBox.Location = new System.Drawing.Point(128, 288);
             this.P3_lastGame_textBox.Name = "P3_lastGame_textBox";
-            this.P3_lastGame_textBox.PlaceholderText = "Last Game Score";
             this.P3_lastGame_textBox.Size = new System.Drawing.Size(100, 23);
             this.P3_lastGame_textBox.TabIndex = 19;
             // 
@@ -255,7 +238,6 @@ namespace CIS353GroupB
             // 
             this.P3_hCap_textBox.Location = new System.Drawing.Point(22, 288);
             this.P3_hCap_textBox.Name = "P3_hCap_textBox";
-            this.P3_hCap_textBox.PlaceholderText = "Handicap";
             this.P3_hCap_textBox.Size = new System.Drawing.Size(100, 23);
             this.P3_hCap_textBox.TabIndex = 18;
             // 
@@ -263,7 +245,6 @@ namespace CIS353GroupB
             // 
             this.P3_Lname_textBox.Location = new System.Drawing.Point(128, 259);
             this.P3_Lname_textBox.Name = "P3_Lname_textBox";
-            this.P3_Lname_textBox.PlaceholderText = "Last Name";
             this.P3_Lname_textBox.Size = new System.Drawing.Size(100, 23);
             this.P3_Lname_textBox.TabIndex = 17;
             // 
@@ -271,7 +252,6 @@ namespace CIS353GroupB
             // 
             this.P3_Fname_textBox.Location = new System.Drawing.Point(22, 259);
             this.P3_Fname_textBox.Name = "P3_Fname_textBox";
-            this.P3_Fname_textBox.PlaceholderText = "First Name";
             this.P3_Fname_textBox.Size = new System.Drawing.Size(100, 23);
             this.P3_Fname_textBox.TabIndex = 16;
             // 
