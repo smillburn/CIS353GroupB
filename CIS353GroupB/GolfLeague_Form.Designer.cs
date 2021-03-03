@@ -67,6 +67,7 @@ namespace CIS353GroupB
             this.cboxTeams = new System.Windows.Forms.ComboBox();
             this.tabDisplayTeam = new System.Windows.Forms.TabPage();
             this.btnClear = new System.Windows.Forms.Button();
+            this.btnExport = new System.Windows.Forms.Button();
             this.Tab_Control.SuspendLayout();
             this.tabCreateTeam.SuspendLayout();
             this.SuspendLayout();
@@ -94,6 +95,7 @@ namespace CIS353GroupB
             // 
             // tabCreateTeam
             // 
+            this.tabCreateTeam.Controls.Add(this.btnExport);
             this.tabCreateTeam.Controls.Add(this.btnClear);
             this.tabCreateTeam.Controls.Add(this.btnImport);
             this.tabCreateTeam.Controls.Add(this.btnDelete);
@@ -139,7 +141,7 @@ namespace CIS353GroupB
             // btnImport
             // 
             this.btnImport.Enabled = false;
-            this.btnImport.Location = new System.Drawing.Point(296, 22);
+            this.btnImport.Location = new System.Drawing.Point(245, 17);
             this.btnImport.Name = "btnImport";
             this.btnImport.Size = new System.Drawing.Size(90, 29);
             this.btnImport.TabIndex = 32;
@@ -388,7 +390,7 @@ namespace CIS353GroupB
             // cboxTeams
             // 
             this.cboxTeams.FormattingEnabled = true;
-            this.cboxTeams.Location = new System.Drawing.Point(157, 27);
+            this.cboxTeams.Location = new System.Drawing.Point(118, 22);
             this.cboxTeams.Name = "cboxTeams";
             this.cboxTeams.Size = new System.Drawing.Size(121, 21);
             this.cboxTeams.TabIndex = 0;
@@ -412,6 +414,16 @@ namespace CIS353GroupB
             this.btnClear.Text = "Clear Form";
             this.btnClear.UseVisualStyleBackColor = true;
             this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
+            // 
+            // btnExport
+            // 
+            this.btnExport.Location = new System.Drawing.Point(341, 17);
+            this.btnExport.Name = "btnExport";
+            this.btnExport.Size = new System.Drawing.Size(90, 29);
+            this.btnExport.TabIndex = 34;
+            this.btnExport.Text = "Export Team";
+            this.btnExport.UseVisualStyleBackColor = true;
+            this.btnExport.Click += new System.EventHandler(this.btnExport_Click);
             // 
             // GolfLeague_Form
             // 
@@ -468,5 +480,6 @@ namespace CIS353GroupB
         private System.Windows.Forms.Button btnUpdate;
         private System.Windows.Forms.Button btnImport;
         private System.Windows.Forms.Button btnClear;
+        private System.Windows.Forms.Button btnExport;
     }
 }

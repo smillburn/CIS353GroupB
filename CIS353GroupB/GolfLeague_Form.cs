@@ -25,6 +25,7 @@ namespace CIS353GroupB
             cboxTeams.Items.Clear();
             btnUpdate.Enabled = false;
             btnImport.Enabled = false;
+            btnExport.Enabled = false;
             btnDelete.Enabled = false;
             clearTeamUpdate();
             foreach (Team team in teams)
@@ -46,6 +47,7 @@ namespace CIS353GroupB
                 Team selectedTeam = teams[cboxTeams.SelectedIndex];
                 btnUpdate.Text = "Update Team";
                 btnDelete.Enabled = true;
+                btnExport.Enabled = true;
                 populateTeamUpdate(selectedTeam);
             }
             else
@@ -173,9 +175,14 @@ namespace CIS353GroupB
             Player tempPlayer = new Player("Fuzzy,Wuzzy,1,2,3");
             for (int i =0; i < 4; i++ )
             {
-                tempTeam.updatePlayer(tempPlayer, i);
+                tempTeam.updatePlayer(RandGenTeam.getPlayer(), i);
             }
             populateTeamUpdate(tempTeam);
+        }
+
+        private void btnExport_Click( object sender, EventArgs e )
+        {
+            MessageBox.Show(teams[cboxTeams.SelectedIndex].ToString());
         }
     }
 }

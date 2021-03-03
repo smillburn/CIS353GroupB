@@ -38,5 +38,9 @@ namespace CIS353GroupB
         {
             return lastGameScore[rand.Next(0, lastGameScore.Length - 1)].ToString();
         }
+        static public Player getPlayer()
+        {
+            return new Player(GetFirstName(), GetLastName(), int.Parse(GetHandicap()), int.Parse(GetScore()), 1);
+        }
     }
 }
