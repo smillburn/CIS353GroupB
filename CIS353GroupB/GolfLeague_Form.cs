@@ -22,6 +22,7 @@ namespace CIS353GroupB
 
         private void populateTeams()
         {
+            teams.Sort(( x, y ) => x.Rank.CompareTo(y.Rank));
             cboxTeams.Items.Clear();
             btnUpdate.Enabled = false;
             btnImport.Enabled = false;
@@ -37,6 +38,8 @@ namespace CIS353GroupB
                 cboxTeams.Items.Add("Add new team");
             }
             cboxTeams.SelectedIndex = -1;
+            treeView1.Nodes.Clear();
+            populateTreeView();
         }
 
         private void cboxTeams_SelectedIndexChanged( object sender, EventArgs e )
@@ -127,18 +130,21 @@ namespace CIS353GroupB
             tempPlayer.LastGameScore = int.Parse(txtG1GameScore.Text);
             tempPlayer.TeamRank = int.Parse(txtG1Rank.Text);
             tempTeam.updatePlayer(tempPlayer, 0);
+            tempPlayer = new Player();
             tempPlayer.FirstName = txtG2FName.Text;
             tempPlayer.LastName = txtG2LName.Text;
             tempPlayer.Handicap = int.Parse(txtG2Handicap.Text);
             tempPlayer.LastGameScore = int.Parse(txtG2GameScore.Text);
             tempPlayer.TeamRank = int.Parse(txtG2Rank.Text);
             tempTeam.updatePlayer(tempPlayer, 1);
+            tempPlayer = new Player();
             tempPlayer.FirstName = txtG3FName.Text;
             tempPlayer.LastName = txtG3LName.Text;
             tempPlayer.Handicap = int.Parse(txtG3Handicap.Text);
             tempPlayer.LastGameScore = int.Parse(txtG3GameScore.Text);
             tempPlayer.TeamRank = int.Parse(txtG3Rank.Text);
             tempTeam.updatePlayer(tempPlayer, 2);
+            tempPlayer = new Player();
             tempPlayer.FirstName = txtG4FName.Text;
             tempPlayer.LastName = txtG4LName.Text;
             tempPlayer.Handicap = int.Parse(txtG4Handicap.Text);
@@ -183,6 +189,27 @@ namespace CIS353GroupB
         private void btnExport_Click( object sender, EventArgs e )
         {
             MessageBox.Show(teams[cboxTeams.SelectedIndex].ToString());
+        }
+
+        private void populateTreeView()
+        {
+            foreach (Team team in teams)
+            {
+                var treeNodes = new List<TreeNode>();
+                var childNodes = new List<TreeNode>();
+
+                for ( int i = 0; i < 4; i++ )
+                {
+
+                    Player tempPlayer = team.getPlayer(i);
+                    if(tempPlayer.FirstName != "")
+                    {
+                        childNodes.Add(new TreeNode(tempPlayer.toDisplayString()));
+                    }
+                }
+                treeNodes.Add(new TreeNode(team.Rank + " " + team.Name, childNodes.ToArray()));
+                treeView1.Nodes.AddRange(treeNodes.ToArray());
+            }
         }
     }
 }

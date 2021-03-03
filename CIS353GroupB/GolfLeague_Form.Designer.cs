@@ -68,8 +68,10 @@ namespace CIS353GroupB
             this.tabDisplayTeam = new System.Windows.Forms.TabPage();
             this.btnClear = new System.Windows.Forms.Button();
             this.btnExport = new System.Windows.Forms.Button();
+            this.treeView1 = new System.Windows.Forms.TreeView();
             this.Tab_Control.SuspendLayout();
             this.tabCreateTeam.SuspendLayout();
+            this.tabDisplayTeam.SuspendLayout();
             this.SuspendLayout();
             // 
             // Tab_Control
@@ -398,6 +400,7 @@ namespace CIS353GroupB
             // 
             // tabDisplayTeam
             // 
+            this.tabDisplayTeam.Controls.Add(this.treeView1);
             this.tabDisplayTeam.Location = new System.Drawing.Point(4, 22);
             this.tabDisplayTeam.Name = "tabDisplayTeam";
             this.tabDisplayTeam.Size = new System.Drawing.Size(558, 300);
@@ -425,6 +428,13 @@ namespace CIS353GroupB
             this.btnExport.UseVisualStyleBackColor = true;
             this.btnExport.Click += new System.EventHandler(this.btnExport_Click);
             // 
+            // treeView1
+            // 
+            this.treeView1.Location = new System.Drawing.Point(3, 3);
+            this.treeView1.Name = "treeView1";
+            this.treeView1.Size = new System.Drawing.Size(552, 294);
+            this.treeView1.TabIndex = 0;
+            // 
             // GolfLeague_Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -436,6 +446,7 @@ namespace CIS353GroupB
             this.Tab_Control.ResumeLayout(false);
             this.tabCreateTeam.ResumeLayout(false);
             this.tabCreateTeam.PerformLayout();
+            this.tabDisplayTeam.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -481,5 +492,6 @@ namespace CIS353GroupB
         private System.Windows.Forms.Button btnImport;
         private System.Windows.Forms.Button btnClear;
         private System.Windows.Forms.Button btnExport;
+        private System.Windows.Forms.TreeView treeView1;
     }
 }

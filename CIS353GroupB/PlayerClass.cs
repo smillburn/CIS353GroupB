@@ -75,6 +75,11 @@ namespace CIS353GroupB
             return new string[5] { firstName, lastName, handicap.ToString(), lastGameScore.ToString(), teamRank.ToString() };
         }
 
+        public string toDisplayString()
+        {
+            return "Rank: " + this.teamRank + " Name: " + this.firstName + " " + this.lastName + " Handicap: " + this.handicap + " Prev Game: " + this.lastGameScore;
+        }
+
         public override string ToString()
         {
             return this.firstName + "," + this.lastName + "," + this.handicap + "," + this.lastGameScore + "," + this.teamRank;
