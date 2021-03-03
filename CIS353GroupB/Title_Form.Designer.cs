@@ -109,7 +109,7 @@ namespace CIS353GroupB
             this.Controls.Add(this.StartNew_button);
             this.Controls.Add(this.Import_btn);
             this.Name = "Title_Form";
-            this.Text = "Form1";
+            this.Text = "Golf League Tournament";
             this.Load += new System.EventHandler(this.Title_Form_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

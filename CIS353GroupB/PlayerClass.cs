@@ -48,6 +48,16 @@ namespace CIS353GroupB
         // Constructors
         public Player() : this("John", "Doe", 0, 72, 0) { }
 
+        public Player(string csv)
+        {
+            string[] parts = csv.Split(',');
+            firstName = parts[0];
+            lastName = parts[1];
+            handicap = int.Parse(parts[2]);
+            lastGameScore = int.Parse(parts[3]);
+            teamRank = int.Parse(parts[4]);
+        }
+
         public Player(string fname, string lname, int handi, int lgame, int rank)
         {
             firstName = fname;
@@ -63,6 +73,11 @@ namespace CIS353GroupB
         public string[] toStringArray()
         {
             return new string[5] { firstName, lastName, handicap.ToString(), lastGameScore.ToString(), teamRank.ToString() };
+        }
+
+        public override string ToString()
+        {
+            return this.firstName + "," + this.lastName + "," + this.handicap + "," + this.lastGameScore + "," + this.teamRank;
         }
 
         public int CompareTo(Player other) //sets the compareto interface to compare players handicaps for sorting

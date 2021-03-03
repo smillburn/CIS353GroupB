@@ -31,7 +31,6 @@ namespace CIS353GroupB
             for (int x = 0; x < players.Length; x++)
                 players[x] = new Player();
         }
-
 		public void updatePlayer(Player player, int index)
         {
 			players[index] = player;
@@ -63,6 +62,11 @@ namespace CIS353GroupB
         public override int GetHashCode() 
         {
             return this.rank.GetHashCode();
+        }
+        public override string ToString()
+        {
+            return this.name + "," + this.rank + "\n" + players[0].ToString() + "\n" + players[1].ToString() + "\n" + players[2].ToString() + "\n" + players[3].ToString();
+            ;
         }
     }
 }

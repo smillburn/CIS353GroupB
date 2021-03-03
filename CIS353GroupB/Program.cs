@@ -29,10 +29,9 @@ namespace CIS353GroupB
                 teamArray[x] = new Team();
             }*/
 
-            Application.SetHighDpiMode(HighDpiMode.SystemAware);
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Title_Form());
+            Application.Run(new GolfLeague_Form());
         }
     }
 }
