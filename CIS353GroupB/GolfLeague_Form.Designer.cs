@@ -402,7 +402,7 @@ namespace CIS353GroupB
             this.tabDisplayTeam.Name = "tabDisplayTeam";
             this.tabDisplayTeam.Size = new System.Drawing.Size(558, 300);
             this.tabDisplayTeam.TabIndex = 2;
-            this.tabDisplayTeam.Text = "DisplayTeam";
+            this.tabDisplayTeam.Text = "Display Teams";
             this.tabDisplayTeam.UseVisualStyleBackColor = true;
             // 
             // btnClear
