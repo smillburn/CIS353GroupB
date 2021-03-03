@@ -32,6 +32,8 @@ namespace CIS353GroupB
             this.Tab_Control = new System.Windows.Forms.TabControl();
             this.tabWelcome = new System.Windows.Forms.TabPage();
             this.tabCreateTeam = new System.Windows.Forms.TabPage();
+            this.btnExport = new System.Windows.Forms.Button();
+            this.btnClear = new System.Windows.Forms.Button();
             this.btnImport = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnUpdate = new System.Windows.Forms.Button();
@@ -66,8 +68,6 @@ namespace CIS353GroupB
             this.txtTeamName = new System.Windows.Forms.TextBox();
             this.cboxTeams = new System.Windows.Forms.ComboBox();
             this.tabDisplayTeam = new System.Windows.Forms.TabPage();
-            this.btnClear = new System.Windows.Forms.Button();
-            this.btnExport = new System.Windows.Forms.Button();
             this.treeView1 = new System.Windows.Forms.TreeView();
             this.Tab_Control.SuspendLayout();
             this.tabCreateTeam.SuspendLayout();
@@ -140,6 +140,26 @@ namespace CIS353GroupB
             this.tabCreateTeam.Text = "Create/Update Team";
             this.tabCreateTeam.UseVisualStyleBackColor = true;
             // 
+            // btnExport
+            // 
+            this.btnExport.Location = new System.Drawing.Point(341, 17);
+            this.btnExport.Name = "btnExport";
+            this.btnExport.Size = new System.Drawing.Size(90, 29);
+            this.btnExport.TabIndex = 34;
+            this.btnExport.Text = "Export Team";
+            this.btnExport.UseVisualStyleBackColor = true;
+            this.btnExport.Click += new System.EventHandler(this.btnExport_Click);
+            // 
+            // btnClear
+            // 
+            this.btnClear.Location = new System.Drawing.Point(346, 254);
+            this.btnClear.Name = "btnClear";
+            this.btnClear.Size = new System.Drawing.Size(90, 29);
+            this.btnClear.TabIndex = 33;
+            this.btnClear.Text = "Clear Form";
+            this.btnClear.UseVisualStyleBackColor = true;
+            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
+            // 
             // btnImport
             // 
             this.btnImport.Enabled = false;
@@ -164,7 +184,7 @@ namespace CIS353GroupB
             // 
             // btnUpdate
             // 
-            this.btnUpdate.Location = new System.Drawing.Point(240, 254);
+            this.btnUpdate.Location = new System.Drawing.Point(235, 254);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(90, 29);
             this.btnUpdate.TabIndex = 30;
@@ -317,7 +337,7 @@ namespace CIS353GroupB
             this.lblPlayerRank.AutoSize = true;
             this.lblPlayerRank.Location = new System.Drawing.Point(457, 110);
             this.lblPlayerRank.Name = "lblPlayerRank";
-            this.lblPlayerRank.Size = new System.Drawing.Size(65, 13);
+            this.lblPlayerRank.Size = new System.Drawing.Size(73, 15);
             this.lblPlayerRank.TabIndex = 9;
             this.lblPlayerRank.Text = "Player Rank";
             // 
@@ -326,7 +346,7 @@ namespace CIS353GroupB
             this.lblGameScore.AutoSize = true;
             this.lblGameScore.Location = new System.Drawing.Point(344, 110);
             this.lblGameScore.Name = "lblGameScore";
-            this.lblGameScore.Size = new System.Drawing.Size(89, 13);
+            this.lblGameScore.Size = new System.Drawing.Size(102, 15);
             this.lblGameScore.TabIndex = 8;
             this.lblGameScore.Text = "Last Game Score";
             // 
@@ -335,7 +355,7 @@ namespace CIS353GroupB
             this.lblHandicap.AutoSize = true;
             this.lblHandicap.Location = new System.Drawing.Point(246, 110);
             this.lblHandicap.Name = "lblHandicap";
-            this.lblHandicap.Size = new System.Drawing.Size(53, 13);
+            this.lblHandicap.Size = new System.Drawing.Size(60, 15);
             this.lblHandicap.TabIndex = 7;
             this.lblHandicap.Text = "Handicap";
             // 
@@ -344,7 +364,7 @@ namespace CIS353GroupB
             this.lblLastName.AutoSize = true;
             this.lblLastName.Location = new System.Drawing.Point(144, 110);
             this.lblLastName.Name = "lblLastName";
-            this.lblLastName.Size = new System.Drawing.Size(58, 13);
+            this.lblLastName.Size = new System.Drawing.Size(67, 15);
             this.lblLastName.TabIndex = 6;
             this.lblLastName.Text = "Last Name";
             // 
@@ -353,7 +373,7 @@ namespace CIS353GroupB
             this.lblFirstName.AutoSize = true;
             this.lblFirstName.Location = new System.Drawing.Point(36, 110);
             this.lblFirstName.Name = "lblFirstName";
-            this.lblFirstName.Size = new System.Drawing.Size(57, 13);
+            this.lblFirstName.Size = new System.Drawing.Size(67, 15);
             this.lblFirstName.TabIndex = 5;
             this.lblFirstName.Text = "First Name";
             // 
@@ -362,7 +382,7 @@ namespace CIS353GroupB
             this.lblTeamRank.AutoSize = true;
             this.lblTeamRank.Location = new System.Drawing.Point(269, 69);
             this.lblTeamRank.Name = "lblTeamRank";
-            this.lblTeamRank.Size = new System.Drawing.Size(66, 13);
+            this.lblTeamRank.Size = new System.Drawing.Size(74, 15);
             this.lblTeamRank.TabIndex = 4;
             this.lblTeamRank.Text = "Team Rank:";
             // 
@@ -371,7 +391,7 @@ namespace CIS353GroupB
             this.lblTeamName.AutoSize = true;
             this.lblTeamName.Location = new System.Drawing.Point(65, 69);
             this.lblTeamName.Name = "lblTeamName";
-            this.lblTeamName.Size = new System.Drawing.Size(68, 13);
+            this.lblTeamName.Size = new System.Drawing.Size(79, 15);
             this.lblTeamName.TabIndex = 3;
             this.lblTeamName.Text = "Team Name:";
             // 
@@ -407,26 +427,6 @@ namespace CIS353GroupB
             this.tabDisplayTeam.TabIndex = 2;
             this.tabDisplayTeam.Text = "Display Teams";
             this.tabDisplayTeam.UseVisualStyleBackColor = true;
-            // 
-            // btnClear
-            // 
-            this.btnClear.Location = new System.Drawing.Point(346, 254);
-            this.btnClear.Name = "btnClear";
-            this.btnClear.Size = new System.Drawing.Size(90, 29);
-            this.btnClear.TabIndex = 33;
-            this.btnClear.Text = "Clear Form";
-            this.btnClear.UseVisualStyleBackColor = true;
-            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
-            // 
-            // btnExport
-            // 
-            this.btnExport.Location = new System.Drawing.Point(341, 17);
-            this.btnExport.Name = "btnExport";
-            this.btnExport.Size = new System.Drawing.Size(90, 29);
-            this.btnExport.TabIndex = 34;
-            this.btnExport.Text = "Export Team";
-            this.btnExport.UseVisualStyleBackColor = true;
-            this.btnExport.Click += new System.EventHandler(this.btnExport_Click);
             // 
             // treeView1
             // 

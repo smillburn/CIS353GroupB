@@ -77,7 +77,8 @@ namespace CIS353GroupB
 
         public string toDisplayString()
         {
-            return "Rank: " + this.teamRank + " Name: " + this.firstName + " " + this.lastName + " Handicap: " + this.handicap + " Prev Game: " + this.lastGameScore;
+            return "Rank: " + this.teamRank + " Name: " + this.firstName + " " + this.lastName + 
+                " Handicap: " + this.handicap + " Prev Game: " + this.lastGameScore;
         }
 
         public override string ToString()
