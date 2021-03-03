@@ -176,9 +176,11 @@ namespace CIS353GroupB
         private void btnImport_Click( object sender, EventArgs e )
         {
             Team tempTeam = new Team();
-            tempTeam.Name = "FuzzyWuzzy";
+            tempTeam.Name = RandGenTeam.GetTeamName();
             tempTeam.Rank = 1;
-            Player tempPlayer = new Player("Fuzzy,Wuzzy,1,2,3");
+            //I don't think this player assignment is needed. The default Team
+            //constructor creates all the players. Henry Flores: 2Mar21
+            //Player tempPlayer = new Player("Fuzzy,Wuzzy,1,2,3");
             for (int i =0; i < 4; i++ )
             {
                 tempTeam.updatePlayer(RandGenTeam.getPlayer(), i);
