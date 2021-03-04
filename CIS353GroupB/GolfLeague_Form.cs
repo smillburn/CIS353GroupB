@@ -1,4 +1,10 @@
-﻿using System;
+﻿/* Name: Jacob Darling, Henry Flores, Skyler Millburn, Garret Waterman
+ * Assignment: Group Project
+ * Date: 3 MAR 2021
+ * Description: Program holds a list of 10 teams participating in a tournament. 
+ *              User can add/remove teams, import/export teams, and display all teams
+ */
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -11,7 +17,7 @@ namespace CIS353GroupB
 {
     public partial class GolfLeague_Form : Form
     {
-
+        // holds current list of teams in the league
         private List<Team> teams = new List<Team>();
 
         public GolfLeague_Form()
@@ -19,33 +25,40 @@ namespace CIS353GroupB
             InitializeComponent();
             populateTeams();
         }
-
+        // populates fields when a team is added or changed. 
         private void populateTeams()
         {
+            // Sort teams by rank
             teams.Sort(( x, y ) => x.Rank.CompareTo(y.Rank));
             cboxTeams.Items.Clear();
+            // disable buttons until team is selected
             btnUpdate.Enabled = false;
             btnImport.Enabled = false;
             btnExport.Enabled = false;
             btnDelete.Enabled = false;
+            // Clear old values from team update tab
             clearTeamUpdate();
+            // Add teams to the combobox
             foreach (Team team in teams)
             {
                 cboxTeams.Items.Add(team.Name);
             }
+            // Add 2 extra values to the combobox if there is less than 10 teams
             if (cboxTeams.Items.Count < 10)
             {
                 cboxTeams.Items.Add("Add new team");
+                cboxTeams.Items.Add("Add random team");
             }
             cboxTeams.SelectedIndex = -1;
+            // Populate the tree view to display all the team information
             treeView1.Nodes.Clear();
             populateTreeView();
         }
-
+        // Event to handle selected team changed
         private void cboxTeams_SelectedIndexChanged( object sender, EventArgs e )
         {
             btnUpdate.Enabled = true;
-            if(cboxTeams.SelectedItem.ToString() != "Add new team")
+            if(cboxTeams.SelectedItem.ToString() != "Add new team" && cboxTeams.SelectedItem.ToString() != "Add random team")
             {
                 Team selectedTeam = teams[cboxTeams.SelectedIndex];
                 btnUpdate.Text = "Update Team";
@@ -53,6 +66,24 @@ namespace CIS353GroupB
                 btnExport.Enabled = true;
                 populateTeamUpdate(selectedTeam);
             }
+            // Add a team filled with random data and enable add buttons
+            else if (cboxTeams.SelectedItem.ToString() == "Add random team")
+            {
+                btnImport.Enabled = true;
+                btnUpdate.Text = "Add Team";
+                btnDelete.Enabled = false;
+
+                Team tempTeam = new Team();
+                tempTeam.Name = RandGenTeam.GetTeamName();
+                tempTeam.Rank = 1;
+
+                for ( int i = 0; i < 4; i++ )
+                {
+                    tempTeam.updatePlayer(RandGenTeam.getPlayer(), i);
+                }
+                populateTeamUpdate(tempTeam);
+            }
+            // clear form and enable add buttons
             else
             {
                 btnImport.Enabled = true;
@@ -61,6 +92,7 @@ namespace CIS353GroupB
                 clearTeamUpdate();
             }
         }
+        // Fills textboxes with team information
         private void populateTeamUpdate(Team team)
         {
             txtTeamName.Text = team.Name;
@@ -90,7 +122,7 @@ namespace CIS353GroupB
             txtG4GameScore.Text = player.LastGameScore.ToString();
             txtG4Rank.Text = player.TeamRank.ToString();
         }
-
+        // clears textboxes string values
         private void clearTeamUpdate()
         {
             cboxTeams.Text = "";
@@ -117,7 +149,7 @@ namespace CIS353GroupB
             txtG4GameScore.Text = "";
             txtG4Rank.Text = "";
         }
-
+        // Handles the update/Add button
         private void btnUpdate_Click( object sender, EventArgs e )
         {
             Team tempTeam = new Team();
@@ -161,18 +193,18 @@ namespace CIS353GroupB
             }
             populateTeams();
         }
-
+        // handles the delete team button
         private void btnDelete_Click( object sender, EventArgs e )
         {
             teams.RemoveAt(cboxTeams.SelectedIndex);
             populateTeams();
         }
-
+        // handles the clear button
         private void btnClear_Click( object sender, EventArgs e )
         {
             clearTeamUpdate();
         }
-
+        // Handles import button
         private void btnImport_Click( object sender, EventArgs e )
         {
             Team tempTeam = new Team();
@@ -185,12 +217,12 @@ namespace CIS353GroupB
             }
             populateTeamUpdate(tempTeam);
         }
-
+        // handles export button
         private void btnExport_Click( object sender, EventArgs e )
         {
             MessageBox.Show(teams[cboxTeams.SelectedIndex].ToString());
         }
-
+        // Populates the tree view
         private void populateTreeView()
         {
             foreach (Team team in teams)
