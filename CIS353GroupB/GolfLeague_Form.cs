@@ -152,47 +152,54 @@ namespace CIS353GroupB
         // Handles the update/Add button
         private void btnUpdate_Click( object sender, EventArgs e )
         {
-            Team tempTeam = new Team();
-            tempTeam.Name = txtTeamName.Text;
-            tempTeam.Rank = int.Parse(txtTeamRank.Text);
-            Player tempPlayer = new Player();
-            tempPlayer.FirstName = txtG1FName.Text;
-            tempPlayer.LastName = txtG1LName.Text;
-            tempPlayer.Handicap = int.Parse(txtG1Handicap.Text);
-            tempPlayer.LastGameScore = int.Parse(txtG1GameScore.Text);
-            tempPlayer.TeamRank = int.Parse(txtG1Rank.Text);
-            tempTeam.updatePlayer(tempPlayer, 0);
-            tempPlayer = new Player();
-            tempPlayer.FirstName = txtG2FName.Text;
-            tempPlayer.LastName = txtG2LName.Text;
-            tempPlayer.Handicap = int.Parse(txtG2Handicap.Text);
-            tempPlayer.LastGameScore = int.Parse(txtG2GameScore.Text);
-            tempPlayer.TeamRank = int.Parse(txtG2Rank.Text);
-            tempTeam.updatePlayer(tempPlayer, 1);
-            tempPlayer = new Player();
-            tempPlayer.FirstName = txtG3FName.Text;
-            tempPlayer.LastName = txtG3LName.Text;
-            tempPlayer.Handicap = int.Parse(txtG3Handicap.Text);
-            tempPlayer.LastGameScore = int.Parse(txtG3GameScore.Text);
-            tempPlayer.TeamRank = int.Parse(txtG3Rank.Text);
-            tempTeam.updatePlayer(tempPlayer, 2);
-            tempPlayer = new Player();
-            tempPlayer.FirstName = txtG4FName.Text;
-            tempPlayer.LastName = txtG4LName.Text;
-            tempPlayer.Handicap = int.Parse(txtG4Handicap.Text);
-            tempPlayer.LastGameScore = int.Parse(txtG4GameScore.Text);
-            tempPlayer.TeamRank = int.Parse(txtG4Rank.Text);
-            tempTeam.updatePlayer(tempPlayer, 3);
-            if ( btnUpdate.Text == "Update Team" )
+            try
             {
-                teams[cboxTeams.SelectedIndex] = tempTeam;
+                Team tempTeam = new Team();
+                tempTeam.Name = txtTeamName.Text != "" ? txtTeamName.Text : throw new ArgumentNullException();
+                tempTeam.Rank = int.Parse(txtTeamRank.Text);
+                Player tempPlayer = new Player();
+                tempPlayer = validatePlayer(txtG1FName, txtG1LName, txtG1Handicap, txtG1GameScore, txtG1Rank);
+                tempTeam.updatePlayer(tempPlayer, 0);
+                tempPlayer = validatePlayer(txtG2FName, txtG2LName, txtG2Handicap, txtG2GameScore, txtG2Rank);
+                tempTeam.updatePlayer(tempPlayer, 1);
+                tempPlayer = validatePlayer(txtG3FName, txtG3LName, txtG3Handicap, txtG3GameScore, txtG3Rank);
+                tempTeam.updatePlayer(tempPlayer, 2);
+                tempPlayer = validatePlayer(txtG4FName, txtG4LName, txtG4Handicap, txtG4GameScore, txtG4Rank);
+                tempTeam.updatePlayer(tempPlayer, 3);
+                if ( btnUpdate.Text == "Update Team" )
+                {
+                    teams[cboxTeams.SelectedIndex] = tempTeam;
+                }
+                else
+                {
+                    teams.Add(tempTeam);
+                }
+                populateTeams();
             }
-            else
+            catch ( ArgumentNullException )
             {
-                teams.Add(tempTeam);
+                MessageBox.Show("Error parsing team. One or more field is empty");
             }
-            populateTeams();
+            // catch parse exception
+            catch ( FormatException )
+            {
+                MessageBox.Show("Error parsing team. Rank, Handicap or score is not a number");
+            }
         }
+        // validates user input
+        public Player validatePlayer(TextBox fname, TextBox lname, TextBox handicap, TextBox score, TextBox rank)
+        {
+            Player player = new Player();
+            player.FirstName = fname.Text != "" ? fname.Text : throw new ArgumentNullException();
+            player.LastName = lname.Text != "" ? lname.Text : throw new ArgumentNullException();
+            player.Handicap = int.Parse(handicap.Text);
+            player.LastGameScore = int.Parse(score.Text);
+            player.TeamRank = int.Parse(rank.Text);
+
+            return player;
+        }
+
+
         // handles the delete team button
         private void btnDelete_Click( object sender, EventArgs e )
         {
@@ -239,7 +246,7 @@ namespace CIS353GroupB
                         childNodes.Add(new TreeNode(tempPlayer.toDisplayString()));
                     }
                 }
-                treeNodes.Add(new TreeNode(team.Rank + " " + team.Name, childNodes.ToArray()));
+                treeNodes.Add(new TreeNode("Rank: " + team.Rank + " " + team.Name, childNodes.ToArray()));
                 treeView1.Nodes.AddRange(treeNodes.ToArray());
             }
         }
@@ -251,6 +258,16 @@ namespace CIS353GroupB
             if ( !char.IsControl(e.KeyChar) && ( !char.IsDigit(e.KeyChar) || ( sender as TextBox ).TextLength >= 3 ) )
             {
                 MessageBox.Show("This field accepts 3 digits only");
+                e.Handled = true;
+            }
+        }
+        // Limits users to only alpha characters in certain textboxes. Handle keypress event
+        private void limitToAlpha( object sender, KeyPressEventArgs e )
+        {
+            // allow only control characters, and alpha characters
+            if ( !char.IsControl(e.KeyChar) && !char.IsLetter(e.KeyChar) )
+            {
+                MessageBox.Show("This field accepts letters only");
                 e.Handled = true;
             }
         }

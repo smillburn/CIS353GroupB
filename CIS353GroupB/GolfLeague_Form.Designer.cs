@@ -222,6 +222,7 @@ namespace CIS353GroupB
             this.txtG4LName.Name = "txtG4LName";
             this.txtG4LName.Size = new System.Drawing.Size(100, 20);
             this.txtG4LName.TabIndex = 26;
+            this.txtG4LName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.limitToAlpha);
             // 
             // txtG4FName
             // 
@@ -229,6 +230,7 @@ namespace CIS353GroupB
             this.txtG4FName.Name = "txtG4FName";
             this.txtG4FName.Size = new System.Drawing.Size(100, 20);
             this.txtG4FName.TabIndex = 25;
+            this.txtG4FName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.limitToAlpha);
             // 
             // txtG3Rank
             // 
@@ -260,6 +262,7 @@ namespace CIS353GroupB
             this.txtG3LName.Name = "txtG3LName";
             this.txtG3LName.Size = new System.Drawing.Size(100, 20);
             this.txtG3LName.TabIndex = 21;
+            this.txtG3LName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.limitToAlpha);
             // 
             // txtG3FName
             // 
@@ -267,6 +270,7 @@ namespace CIS353GroupB
             this.txtG3FName.Name = "txtG3FName";
             this.txtG3FName.Size = new System.Drawing.Size(100, 20);
             this.txtG3FName.TabIndex = 20;
+            this.txtG3FName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.limitToAlpha);
             // 
             // txtG2Rank
             // 
@@ -298,6 +302,7 @@ namespace CIS353GroupB
             this.txtG2LName.Name = "txtG2LName";
             this.txtG2LName.Size = new System.Drawing.Size(100, 20);
             this.txtG2LName.TabIndex = 16;
+            this.txtG2LName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.limitToAlpha);
             // 
             // txtG2FName
             // 
@@ -305,6 +310,7 @@ namespace CIS353GroupB
             this.txtG2FName.Name = "txtG2FName";
             this.txtG2FName.Size = new System.Drawing.Size(100, 20);
             this.txtG2FName.TabIndex = 15;
+            this.txtG2FName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.limitToAlpha);
             // 
             // txtG1Rank
             // 
@@ -336,6 +342,7 @@ namespace CIS353GroupB
             this.txtG1LName.Name = "txtG1LName";
             this.txtG1LName.Size = new System.Drawing.Size(100, 20);
             this.txtG1LName.TabIndex = 11;
+            this.txtG1LName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.limitToAlpha);
             // 
             // txtG1FName
             // 
@@ -343,13 +350,14 @@ namespace CIS353GroupB
             this.txtG1FName.Name = "txtG1FName";
             this.txtG1FName.Size = new System.Drawing.Size(100, 20);
             this.txtG1FName.TabIndex = 10;
+            this.txtG1FName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.limitToAlpha);
             // 
             // lblPlayerRank
             // 
             this.lblPlayerRank.AutoSize = true;
             this.lblPlayerRank.Location = new System.Drawing.Point(457, 110);
             this.lblPlayerRank.Name = "lblPlayerRank";
-            this.lblPlayerRank.Size = new System.Drawing.Size(73, 15);
+            this.lblPlayerRank.Size = new System.Drawing.Size(65, 13);
             this.lblPlayerRank.TabIndex = 9;
             this.lblPlayerRank.Text = "Player Rank";
             // 
@@ -358,7 +366,7 @@ namespace CIS353GroupB
             this.lblGameScore.AutoSize = true;
             this.lblGameScore.Location = new System.Drawing.Point(344, 110);
             this.lblGameScore.Name = "lblGameScore";
-            this.lblGameScore.Size = new System.Drawing.Size(102, 15);
+            this.lblGameScore.Size = new System.Drawing.Size(89, 13);
             this.lblGameScore.TabIndex = 8;
             this.lblGameScore.Text = "Last Game Score";
             // 
@@ -367,7 +375,7 @@ namespace CIS353GroupB
             this.lblHandicap.AutoSize = true;
             this.lblHandicap.Location = new System.Drawing.Point(246, 110);
             this.lblHandicap.Name = "lblHandicap";
-            this.lblHandicap.Size = new System.Drawing.Size(60, 15);
+            this.lblHandicap.Size = new System.Drawing.Size(53, 13);
             this.lblHandicap.TabIndex = 7;
             this.lblHandicap.Text = "Handicap";
             // 
@@ -376,7 +384,7 @@ namespace CIS353GroupB
             this.lblLastName.AutoSize = true;
             this.lblLastName.Location = new System.Drawing.Point(144, 110);
             this.lblLastName.Name = "lblLastName";
-            this.lblLastName.Size = new System.Drawing.Size(67, 15);
+            this.lblLastName.Size = new System.Drawing.Size(58, 13);
             this.lblLastName.TabIndex = 6;
             this.lblLastName.Text = "Last Name";
             // 
@@ -385,7 +393,7 @@ namespace CIS353GroupB
             this.lblFirstName.AutoSize = true;
             this.lblFirstName.Location = new System.Drawing.Point(36, 110);
             this.lblFirstName.Name = "lblFirstName";
-            this.lblFirstName.Size = new System.Drawing.Size(67, 15);
+            this.lblFirstName.Size = new System.Drawing.Size(57, 13);
             this.lblFirstName.TabIndex = 5;
             this.lblFirstName.Text = "First Name";
             // 
@@ -394,7 +402,7 @@ namespace CIS353GroupB
             this.lblTeamRank.AutoSize = true;
             this.lblTeamRank.Location = new System.Drawing.Point(269, 69);
             this.lblTeamRank.Name = "lblTeamRank";
-            this.lblTeamRank.Size = new System.Drawing.Size(74, 15);
+            this.lblTeamRank.Size = new System.Drawing.Size(66, 13);
             this.lblTeamRank.TabIndex = 4;
             this.lblTeamRank.Text = "Team Rank:";
             // 
@@ -403,7 +411,7 @@ namespace CIS353GroupB
             this.lblTeamName.AutoSize = true;
             this.lblTeamName.Location = new System.Drawing.Point(65, 69);
             this.lblTeamName.Name = "lblTeamName";
-            this.lblTeamName.Size = new System.Drawing.Size(79, 15);
+            this.lblTeamName.Size = new System.Drawing.Size(68, 13);
             this.lblTeamName.TabIndex = 3;
             this.lblTeamName.Text = "Team Name:";
             // 
@@ -420,6 +428,7 @@ namespace CIS353GroupB
             this.txtTeamName.Name = "txtTeamName";
             this.txtTeamName.Size = new System.Drawing.Size(100, 20);
             this.txtTeamName.TabIndex = 1;
+            this.txtTeamName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.limitToAlpha);
             // 
             // cboxTeams
             // 
