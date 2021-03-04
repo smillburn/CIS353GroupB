@@ -178,9 +178,7 @@ namespace CIS353GroupB
             Team tempTeam = new Team();
             tempTeam.Name = RandGenTeam.GetTeamName();
             tempTeam.Rank = 1;
-            //I don't think this player assignment is needed. The default Team
-            //constructor creates all the players. Henry Flores: 2Mar21
-            //Player tempPlayer = new Player("Fuzzy,Wuzzy,1,2,3");
+
             for (int i =0; i < 4; i++ )
             {
                 tempTeam.updatePlayer(RandGenTeam.getPlayer(), i);
@@ -211,6 +209,17 @@ namespace CIS353GroupB
                 }
                 treeNodes.Add(new TreeNode(team.Rank + " " + team.Name, childNodes.ToArray()));
                 treeView1.Nodes.AddRange(treeNodes.ToArray());
+            }
+        }
+
+        // Limits users to only digits in certain textboxes. Handle keypress event
+        private void limitToNumbers( object sender, KeyPressEventArgs e )
+        {
+            // allow only control characters, and 3 digits
+            if ( !char.IsControl(e.KeyChar) && ( !char.IsDigit(e.KeyChar) || ( sender as TextBox ).TextLength >= 3 ) )
+            {
+                MessageBox.Show("This field accepts 3 digits only");
+                e.Handled = true;
             }
         }
     }

@@ -198,6 +198,7 @@ namespace CIS353GroupB
             this.txtG4Rank.Name = "txtG4Rank";
             this.txtG4Rank.Size = new System.Drawing.Size(100, 20);
             this.txtG4Rank.TabIndex = 29;
+            this.txtG4Rank.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.limitToNumbers);
             // 
             // txtG4GameScore
             // 
@@ -205,6 +206,7 @@ namespace CIS353GroupB
             this.txtG4GameScore.Name = "txtG4GameScore";
             this.txtG4GameScore.Size = new System.Drawing.Size(100, 20);
             this.txtG4GameScore.TabIndex = 28;
+            this.txtG4GameScore.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.limitToNumbers);
             // 
             // txtG4Handicap
             // 
@@ -212,6 +214,7 @@ namespace CIS353GroupB
             this.txtG4Handicap.Name = "txtG4Handicap";
             this.txtG4Handicap.Size = new System.Drawing.Size(100, 20);
             this.txtG4Handicap.TabIndex = 27;
+            this.txtG4Handicap.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.limitToNumbers);
             // 
             // txtG4LName
             // 
@@ -233,6 +236,7 @@ namespace CIS353GroupB
             this.txtG3Rank.Name = "txtG3Rank";
             this.txtG3Rank.Size = new System.Drawing.Size(100, 20);
             this.txtG3Rank.TabIndex = 24;
+            this.txtG3Rank.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.limitToNumbers);
             // 
             // txtG3GameScore
             // 
@@ -240,6 +244,7 @@ namespace CIS353GroupB
             this.txtG3GameScore.Name = "txtG3GameScore";
             this.txtG3GameScore.Size = new System.Drawing.Size(100, 20);
             this.txtG3GameScore.TabIndex = 23;
+            this.txtG3GameScore.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.limitToNumbers);
             // 
             // txtG3Handicap
             // 
@@ -247,6 +252,7 @@ namespace CIS353GroupB
             this.txtG3Handicap.Name = "txtG3Handicap";
             this.txtG3Handicap.Size = new System.Drawing.Size(100, 20);
             this.txtG3Handicap.TabIndex = 22;
+            this.txtG3Handicap.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.limitToNumbers);
             // 
             // txtG3LName
             // 
@@ -268,6 +274,7 @@ namespace CIS353GroupB
             this.txtG2Rank.Name = "txtG2Rank";
             this.txtG2Rank.Size = new System.Drawing.Size(100, 20);
             this.txtG2Rank.TabIndex = 19;
+            this.txtG2Rank.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.limitToNumbers);
             // 
             // txtG2GameScore
             // 
@@ -275,6 +282,7 @@ namespace CIS353GroupB
             this.txtG2GameScore.Name = "txtG2GameScore";
             this.txtG2GameScore.Size = new System.Drawing.Size(100, 20);
             this.txtG2GameScore.TabIndex = 18;
+            this.txtG2GameScore.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.limitToNumbers);
             // 
             // txtG2Handicap
             // 
@@ -282,6 +290,7 @@ namespace CIS353GroupB
             this.txtG2Handicap.Name = "txtG2Handicap";
             this.txtG2Handicap.Size = new System.Drawing.Size(100, 20);
             this.txtG2Handicap.TabIndex = 17;
+            this.txtG2Handicap.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.limitToNumbers);
             // 
             // txtG2LName
             // 
@@ -303,6 +312,7 @@ namespace CIS353GroupB
             this.txtG1Rank.Name = "txtG1Rank";
             this.txtG1Rank.Size = new System.Drawing.Size(100, 20);
             this.txtG1Rank.TabIndex = 14;
+            this.txtG1Rank.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.limitToNumbers);
             // 
             // txtG1GameScore
             // 
@@ -310,6 +320,7 @@ namespace CIS353GroupB
             this.txtG1GameScore.Name = "txtG1GameScore";
             this.txtG1GameScore.Size = new System.Drawing.Size(100, 20);
             this.txtG1GameScore.TabIndex = 13;
+            this.txtG1GameScore.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.limitToNumbers);
             // 
             // txtG1Handicap
             // 
@@ -317,6 +328,7 @@ namespace CIS353GroupB
             this.txtG1Handicap.Name = "txtG1Handicap";
             this.txtG1Handicap.Size = new System.Drawing.Size(100, 20);
             this.txtG1Handicap.TabIndex = 12;
+            this.txtG1Handicap.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.limitToNumbers);
             // 
             // txtG1LName
             // 
