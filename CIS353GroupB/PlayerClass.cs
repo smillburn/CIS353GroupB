@@ -90,7 +90,8 @@ namespace CIS353GroupB
         //sets the compareto interface to compare players handicaps for sorting
         public int CompareTo(Player other) 
         {
-            return this.Handicap.CompareTo(other.Handicap);
+            return (this.LastGameScore - this.Handicap).CompareTo(other.LastGameScore - other.Handicap);
+            //return this.Handicap.CompareTo(other.Handicap);
         }
         // override Equals to compare two players on handicap
         public override bool Equals(object obj) 

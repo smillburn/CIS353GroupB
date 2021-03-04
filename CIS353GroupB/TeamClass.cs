@@ -24,6 +24,11 @@ namespace CIS353GroupB
 			get => rank;
 			set => rank = value;
         }
+        //Team Score to use in CompareTo
+        public int TeamTotalScore
+        {
+            get; set;
+        }
         // Default constructor
         public Team()
         {
@@ -40,11 +45,27 @@ namespace CIS353GroupB
         {
             return players[index];
         }
-
+        public void Sort()
+        {
+            Array.Sort(players);
+            for (int i = 0; i < 4; i++)
+            {
+                players[i].TeamRank = (i + 1);
+            }
+        }
+        public void CalculateTeamScore()
+        {
+            int score = 0;
+            for (int x = 0; x < 4; x++)
+            {
+                score += (players[x].LastGameScore - players[x].Handicap);
+            }
+            TeamTotalScore = score;
+        }
         //sets the compareto interface to compare teams rank for sorting
         public int CompareTo(Team other) 
         {
-            return this.rank.CompareTo(other.rank);
+            return this.TeamTotalScore.CompareTo(other.TeamTotalScore);
         }
         // override Equals to compare check if team already exists
         public override bool Equals(object obj) 

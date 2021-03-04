@@ -60,12 +60,12 @@ namespace CIS353GroupB
         // Gets a random team name
         static public string GetTeamName()
         {
-            return randTnames[rand.Next(0, lastGameScore.Length)].ToString();
+            return randTnames[rand.Next(0, randTnames.Length)].ToString();
         }
         // Gets a full random player with a default rank of 1
         static public Player getPlayer()
         {
-            return new Player(GetFirstName(), GetLastName(), int.Parse(GetHandicap()), int.Parse(GetScore()), 1);
+            return new Player(GetFirstName(), GetLastName(), int.Parse(GetHandicap()), int.Parse(GetScore()), 0);
         }
     }
 }

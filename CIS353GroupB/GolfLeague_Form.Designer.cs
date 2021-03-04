@@ -194,6 +194,7 @@ namespace CIS353GroupB
             // 
             // txtG4Rank
             // 
+            this.txtG4Rank.Enabled = false;
             this.txtG4Rank.Location = new System.Drawing.Point(442, 216);
             this.txtG4Rank.Name = "txtG4Rank";
             this.txtG4Rank.Size = new System.Drawing.Size(100, 20);
@@ -234,6 +235,7 @@ namespace CIS353GroupB
             // 
             // txtG3Rank
             // 
+            this.txtG3Rank.Enabled = false;
             this.txtG3Rank.Location = new System.Drawing.Point(442, 190);
             this.txtG3Rank.Name = "txtG3Rank";
             this.txtG3Rank.Size = new System.Drawing.Size(100, 20);
@@ -274,6 +276,7 @@ namespace CIS353GroupB
             // 
             // txtG2Rank
             // 
+            this.txtG2Rank.Enabled = false;
             this.txtG2Rank.Location = new System.Drawing.Point(442, 164);
             this.txtG2Rank.Name = "txtG2Rank";
             this.txtG2Rank.Size = new System.Drawing.Size(100, 20);
@@ -314,6 +317,7 @@ namespace CIS353GroupB
             // 
             // txtG1Rank
             // 
+            this.txtG1Rank.Enabled = false;
             this.txtG1Rank.Location = new System.Drawing.Point(442, 138);
             this.txtG1Rank.Name = "txtG1Rank";
             this.txtG1Rank.Size = new System.Drawing.Size(100, 20);
