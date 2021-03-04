@@ -29,7 +29,13 @@ namespace CIS353GroupB
         private void populateTeams()
         {
             // Sort teams by rank
-            teams.Sort(( x, y ) => x.Rank.CompareTo(y.Rank));
+            teams.Sort(( x, y ) => x.TeamTotalScore.CompareTo(y.TeamTotalScore));
+            int count = 1;
+            foreach (Team team in teams)
+            {
+                team.Rank = count;
+                count++;
+            }
             cboxTeams.Items.Clear();
             // disable buttons until team is selected
             btnUpdate.Enabled = false;
@@ -75,6 +81,22 @@ namespace CIS353GroupB
 
                 Team tempTeam = new Team();
                 tempTeam.Name = RandGenTeam.GetTeamName();
+                bool duplicate = false;
+                foreach (Team team in teams)
+                {
+                    if (tempTeam.Name.Equals(team))
+                        duplicate = true;
+                }
+                while (duplicate)
+                {
+                    tempTeam.Name = RandGenTeam.GetTeamName();
+                    duplicate = false;
+                    foreach (Team team in teams)
+                    {
+                        if (tempTeam.Name.Equals(team))
+                            duplicate = true;
+                    }
+                }
                 tempTeam.Rank = 1;
 
                 for ( int i = 0; i < 4; i++ )
@@ -183,6 +205,8 @@ namespace CIS353GroupB
             tempPlayer.LastGameScore = int.Parse(txtG4GameScore.Text);
             tempPlayer.TeamRank = int.Parse(txtG4Rank.Text);
             tempTeam.updatePlayer(tempPlayer, 3);
+            tempTeam.Sort();
+            tempTeam.CalculateTeamScore();
             if ( btnUpdate.Text == "Update Team" )
             {
                 teams[cboxTeams.SelectedIndex] = tempTeam;
@@ -239,7 +263,7 @@ namespace CIS353GroupB
                         childNodes.Add(new TreeNode(tempPlayer.toDisplayString()));
                     }
                 }
-                treeNodes.Add(new TreeNode(team.Rank + " " + team.Name, childNodes.ToArray()));
+                treeNodes.Add(new TreeNode(team.Rank + " " + team.Name + " Team Score: " + team.TeamTotalScore, childNodes.ToArray()));
                 treeView1.Nodes.AddRange(treeNodes.ToArray());
             }
         }
