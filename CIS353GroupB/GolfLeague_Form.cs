@@ -168,44 +168,86 @@ namespace CIS353GroupB
         }
         private void SaveTeams(Team team)
         {
-            try
+            // save/append? team to file - single file??
+            FileStream outFile = new FileStream("teams.txt", FileMode.Append, FileAccess.Write, FileShare.ReadWrite);
+            using (StreamWriter writer = new StreamWriter(outFile))
             {
-
-                File.WriteAllText("teams.txt", team.ToString());
-            }
-            catch (Exception k)
-            {
-                MessageBox.Show(k.Message);
+                writer.WriteLine(team.ToString() + "\n");
             }
         }
         private void LoadTeams()
         {
-            try
+            //need to take the teams.txt file and move it into the tree view append teams.
+            // turn each team into object, then append object to "teams" list. finally, update treview with method.
+            if (File.Exists("teams.txt"))
             {
-                if (File.Exists("teams.txt"))
-                {
-                    StreamReader reader = new StreamReader(File.OpenRead("teams.txt"));
-                    while (!reader.EndOfStream)
-                    {
-                        Team tempTeam = new Team();
-                        var line = reader.ReadLine();
-                        var values = line.Split(',');
-                        tempTeam.Name = values[0];
-                        tempTeam.Rank = int.Parse(values[1]);
-                        for (int i = 0; i < 4; i++)
-                        {
-                            line = reader.ReadLine();
-                            Player player = new Player(line);
-                            tempTeam.updatePlayer(player, i);
-                        }
-                    }
+                //var teams = new List<Team>(); // create list to hold teams in text file
 
+                FileStream inFile = new FileStream("teams.txt", FileMode.OpenOrCreate, FileAccess.Read, FileShare.Read);
+                using (StreamReader reader = new StreamReader(inFile))
+                {
+                    string line;
+                    int index = 0; // runs through and keeps track of teams outside of the lines will always be 0-4
+                    int lnumber = 0;
+                    int t = 0; //to help add new team objects to team list
+
+                    while ((line = reader.ReadLine()) != null)
+                    {
+                        // need to make some assumptions about the text file this information is in.
+                        // each object will be 5 lines followed by a blank line.
+                        // line 1 is team name and rank
+                        // each line, 2-4, will contain a full player object.
+
+                        if (index >= 0 && index < 5)
+                        {
+
+                            switch (index)
+                            {
+                                case (0):
+                                    teams.Add(new Team());
+                                    teams[t].Name = line.Split(',')[0];
+                                    break;
+                                case (1):
+                                    Player Player1 = new Player(line);
+                                    teams[t].updatePlayer(Player1, 0);
+                                    break;
+                                case (2):
+                                    Player Player2 = new Player(line);
+                                    teams[t].updatePlayer(Player2, 1);
+                                    break;
+                                case (3):
+                                    Player Player3 = new Player(line);
+                                    teams[t].updatePlayer(Player3, 2);
+                                    break;
+                                case (4):
+                                    Player Player4 = new Player(line);
+                                    teams[t].updatePlayer(Player4, 3);
+                                    teams[t].Sort();
+                                    teams[t].CalculateTeamScore();
+                                    //teams.Add(teams[t]);
+                                    //populateTeams(); maybe do this last
+                                    break;
+                                default:
+                                    break;
+                            }
+                        }
+                        else
+                        {
+                            index = -1;
+                            t++;
+                        }
+                        /*
+                            txtG1FName.Text = line.Split(',')[0];
+                            txtG1LName.Text = line.Split(',')[1];
+                            txtG1Handicap.Text = line.Split(',')[2];
+                            txtG1GameScore.Text = line.Split(',')[3];
+                            txtG1Rank.Text = line.Split(',')[4];
+                         */
+                        lnumber++;
+                        index++;
+                    }
                 }
-                else throw new FileNotFoundException("File not found");
-            }
-            catch (Exception k)
-            {
-                MessageBox.Show(k.Message);
+                populateTeams();
             }
         }
         // Handles the update/Add button
@@ -394,10 +436,9 @@ namespace CIS353GroupB
             }
         }
 
-        private void CreateTeam_Form_Load(object sender, EventArgs e)
+        private void GolfLeague_Form_Load(object sender, EventArgs e)
         {
             LoadTeams();
-
         }
     }
 }

@@ -468,6 +468,7 @@ namespace CIS353GroupB
             this.Controls.Add(this.Tab_Control);
             this.Name = "GolfLeague_Form";
             this.Text = "CreateTeam_Form";
+            this.Load += new System.EventHandler(this.GolfLeague_Form_Load);
             this.Tab_Control.ResumeLayout(false);
             this.tabCreateTeam.ResumeLayout(false);
             this.tabCreateTeam.PerformLayout();
