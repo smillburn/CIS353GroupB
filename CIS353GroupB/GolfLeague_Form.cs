@@ -12,6 +12,8 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 using System.Text.RegularExpressions;
+using System.Xml.Serialization;
+using System.IO;
 
 namespace CIS353GroupB
 {
@@ -171,6 +173,44 @@ namespace CIS353GroupB
             txtG4GameScore.Text = "";
             txtG4Rank.Text = "";
         }
+        private void SaveTeams(Team team)
+        {
+            try
+            {
+
+                File.WriteAllText("teams.txt", team.ToString());
+            }
+            catch (Exception k)
+            {
+                MessageBox.Show(k.Message);
+            }
+        }
+        private void LoadTeams()
+        {
+            try
+            {
+                if (File.Exists("teams.txt"))
+                {
+                    StreamReader reader = new StreamReader(File.OpenRead("teams.txt"));
+                    List<string> listA = new List<string>();
+                    while (!reader.EndOfStream)
+                    {
+                        var line = reader.ReadLine();
+                        var values = line.Split(',');
+                        foreach (var item in values)
+                        {
+                            listA.Add(item);
+                        }
+                    }
+
+                }
+                else throw new FileNotFoundException("File not found");
+            }
+            catch (Exception k)
+            {
+                MessageBox.Show(k.Message);
+            }
+        }
         // Handles the update/Add button
         private void btnUpdate_Click( object sender, EventArgs e )
         {
@@ -250,6 +290,8 @@ namespace CIS353GroupB
         // handles export button
         private void btnExport_Click( object sender, EventArgs e )
         {
+            SaveTeams(teams[cboxTeams.SelectedIndex]);
+            
             MessageBox.Show(teams[cboxTeams.SelectedIndex].ToString());
         }
         // Populates the tree view
@@ -293,6 +335,12 @@ namespace CIS353GroupB
                 MessageBox.Show("This field accepts letters only");
                 e.Handled = true;
             }
+        }
+
+        private void CreateTeam_Form_Load(object sender, EventArgs e)
+        {
+            LoadTeams();
+
         }
     }
 }
