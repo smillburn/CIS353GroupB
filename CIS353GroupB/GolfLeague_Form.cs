@@ -87,8 +87,10 @@ namespace CIS353GroupB
                 bool duplicate = false;
                 foreach (Team team in teams)
                 {
-                    if (tempTeam.Name.Equals(team))
+                    if (tempTeam.Equals(team))
+                    {
                         duplicate = true;
+                    }
                 }
                 while (duplicate)
                 {
@@ -96,7 +98,7 @@ namespace CIS353GroupB
                     duplicate = false;
                     foreach (Team team in teams)
                     {
-                        if (tempTeam.Name.Equals(team))
+                        if (tempTeam.Equals(team))
                             duplicate = true;
                     }
                 }
