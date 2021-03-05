@@ -15,6 +15,7 @@ using System.Text.RegularExpressions;
 using System.Xml.Serialization;
 using System.IO;
 using System.Linq;
+using System.Diagnostics;
 
 namespace CIS353GroupB
 {
@@ -22,6 +23,12 @@ namespace CIS353GroupB
     {
         // holds current list of teams in the league
         private List<Team> teams = new List<Team>();
+
+        // File dialog to import files from file system
+        OpenFileDialog openFileDialog1 = new OpenFileDialog
+        {
+            InitialDirectory = AppDomain.CurrentDomain.BaseDirectory //opens filedialog at application root
+        };
 
         public GolfLeague_Form()
         {
@@ -267,15 +274,75 @@ namespace CIS353GroupB
         // Handles import button
         private void btnImport_Click( object sender, EventArgs e )
         {
-            Team tempTeam = new Team();
-            tempTeam.Name = RandGenTeam.GetTeamName();
-            tempTeam.Rank = 1;
-
-            for (int i =0; i < 4; i++ )
+            // Import dialog box
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
-                tempTeam.updatePlayer(RandGenTeam.getPlayer(), i);
+                string file = openFileDialog1.FileName;
+
+                FileStream inFile = new FileStream(file, FileMode.OpenOrCreate, FileAccess.Read, FileShare.Read);
+                try
+                {
+                    using (StreamReader reader = new StreamReader(inFile))
+                    {
+                        string line;
+                        int lnumber = 0;
+                        while ((line = reader.ReadLine()) != null)
+                        {
+
+                            // pull in a single team from a csv, assumes only 4 team members
+                            switch (lnumber)
+                            {
+                                case (0):
+                                    txtTeamName.Text = line.Split(',')[0];
+                                    txtTeamRank.Text = line.Split(',')[1];
+                                    break;
+
+                                case (1):
+                                    txtG1FName.Text = line.Split(',')[0];
+                                    txtG1LName.Text = line.Split(',')[1];
+                                    txtG1Handicap.Text = line.Split(',')[2];
+                                    txtG1GameScore.Text = line.Split(',')[3];
+                                    txtG1Rank.Text = line.Split(',')[4];
+                                    break;
+
+                                case (2):
+                                    txtG2FName.Text = line.Split(',')[0];
+                                    txtG2LName.Text = line.Split(',')[1];
+                                    txtG2Handicap.Text = line.Split(',')[2];
+                                    txtG2GameScore.Text = line.Split(',')[3];
+                                    txtG2Rank.Text = line.Split(',')[4];
+                                    break;
+
+                                case (3):
+                                    txtG3FName.Text = line.Split(',')[0];
+                                    txtG3LName.Text = line.Split(',')[1];
+                                    txtG3Handicap.Text = line.Split(',')[2];
+                                    txtG3GameScore.Text = line.Split(',')[3];
+                                    txtG3Rank.Text = line.Split(',')[4];
+                                    break;
+
+                                case (4):
+                                    txtG4FName.Text = line.Split(',')[0];
+                                    txtG4LName.Text = line.Split(',')[1];
+                                    txtG4Handicap.Text = line.Split(',')[2];
+                                    txtG4GameScore.Text = line.Split(',')[3];
+                                    txtG4Rank.Text = line.Split(',')[4];
+                                    break;
+
+                                default:
+                                    break;
+
+                            }
+
+                            lnumber++;
+                        }
+                    }
+                }
+                catch
+                {
+
+                }
             }
-            populateTeamUpdate(tempTeam);
         }
         // handles export button
         private void btnExport_Click( object sender, EventArgs e )
