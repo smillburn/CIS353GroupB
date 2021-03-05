@@ -236,13 +236,7 @@ namespace CIS353GroupB
                             index = -1;
                             t++;
                         }
-                        /*
-                            txtG1FName.Text = line.Split(',')[0];
-                            txtG1LName.Text = line.Split(',')[1];
-                            txtG1Handicap.Text = line.Split(',')[2];
-                            txtG1GameScore.Text = line.Split(',')[3];
-                            txtG1Rank.Text = line.Split(',')[4];
-                         */
+
                         lnumber++;
                         index++;
                     }
