@@ -14,6 +14,7 @@ using System.Windows.Forms;
 using System.Text.RegularExpressions;
 using System.Xml.Serialization;
 using System.IO;
+using System.Linq;
 
 namespace CIS353GroupB
 {
@@ -150,28 +151,11 @@ namespace CIS353GroupB
         private void clearTeamUpdate()
         {
             cboxTeams.Text = "";
-            txtTeamName.Text = "";
-            txtTeamRank.Text = "";
-            txtG1FName.Text = "";
-            txtG1LName.Text = "";
-            txtG1Handicap.Text = "";
-            txtG1GameScore.Text = "";
-            txtG1Rank.Text = "";
-            txtG2FName.Text = "";
-            txtG2LName.Text = "";
-            txtG2Handicap.Text = "";
-            txtG2GameScore.Text = "";
-            txtG2Rank.Text = "";
-            txtG3FName.Text = "";
-            txtG3LName.Text = "";
-            txtG3Handicap.Text = "";
-            txtG3GameScore.Text = "";
-            txtG3Rank.Text = "";
-            txtG4FName.Text = "";
-            txtG4LName.Text = "";
-            txtG4Handicap.Text = "";
-            txtG4GameScore.Text = "";
-            txtG4Rank.Text = "";
+
+            foreach ( TextBox t in tabCreateTeam.Controls.OfType<TextBox>() )
+            {
+                t.Text = "";
+            }
         }
         private void SaveTeams(Team team)
         {
@@ -192,14 +176,18 @@ namespace CIS353GroupB
                 if (File.Exists("teams.txt"))
                 {
                     StreamReader reader = new StreamReader(File.OpenRead("teams.txt"));
-                    List<string> listA = new List<string>();
                     while (!reader.EndOfStream)
                     {
+                        Team tempTeam = new Team();
                         var line = reader.ReadLine();
                         var values = line.Split(',');
-                        foreach (var item in values)
+                        tempTeam.Name = values[0];
+                        tempTeam.Rank = int.Parse(values[1]);
+                        for (int i = 0; i < 4; i++)
                         {
-                            listA.Add(item);
+                            line = reader.ReadLine();
+                            Player player = new Player(line);
+                            tempTeam.updatePlayer(player, i);
                         }
                     }
 
