@@ -32,6 +32,10 @@ namespace CIS353GroupB
         {
             this.Tab_Control = new System.Windows.Forms.TabControl();
             this.tabWelcome = new System.Windows.Forms.TabPage();
+            this.lblDeveloperCredit = new System.Windows.Forms.Label();
+            this.lblVersionNumber = new System.Windows.Forms.Label();
+            this.lblDescription = new System.Windows.Forms.Label();
+            this.lblTitleCard = new System.Windows.Forms.Label();
             this.tabCreateTeam = new System.Windows.Forms.TabPage();
             this.btnExport = new System.Windows.Forms.Button();
             this.btnClear = new System.Windows.Forms.Button();
@@ -70,9 +74,14 @@ namespace CIS353GroupB
             this.cboxTeams = new System.Windows.Forms.ComboBox();
             this.tabDisplayTeam = new System.Windows.Forms.TabPage();
             this.treeView1 = new System.Windows.Forms.TreeView();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.Tab_Control.SuspendLayout();
+            this.tabWelcome.SuspendLayout();
             this.tabCreateTeam.SuspendLayout();
             this.tabDisplayTeam.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // Tab_Control
@@ -88,6 +97,12 @@ namespace CIS353GroupB
             // 
             // tabWelcome
             // 
+            this.tabWelcome.Controls.Add(this.pictureBox2);
+            this.tabWelcome.Controls.Add(this.pictureBox1);
+            this.tabWelcome.Controls.Add(this.lblDeveloperCredit);
+            this.tabWelcome.Controls.Add(this.lblVersionNumber);
+            this.tabWelcome.Controls.Add(this.lblDescription);
+            this.tabWelcome.Controls.Add(this.lblTitleCard);
             this.tabWelcome.Location = new System.Drawing.Point(4, 22);
             this.tabWelcome.Name = "tabWelcome";
             this.tabWelcome.Padding = new System.Windows.Forms.Padding(3);
@@ -95,6 +110,48 @@ namespace CIS353GroupB
             this.tabWelcome.TabIndex = 0;
             this.tabWelcome.Text = "Welcome";
             this.tabWelcome.UseVisualStyleBackColor = true;
+            // 
+            // lblDeveloperCredit
+            // 
+            this.lblDeveloperCredit.AllowDrop = true;
+            this.lblDeveloperCredit.AutoSize = true;
+            this.lblDeveloperCredit.Location = new System.Drawing.Point(6, 232);
+            this.lblDeveloperCredit.Name = "lblDeveloperCredit";
+            this.lblDeveloperCredit.Size = new System.Drawing.Size(104, 75);
+            this.lblDeveloperCredit.TabIndex = 4;
+            this.lblDeveloperCredit.Text = "Your Developers:\r\nHenry Flores\r\nSkyler Millburn\r\nGarrett Waterman\r\nJacob Darling";
+            // 
+            // lblVersionNumber
+            // 
+            this.lblVersionNumber.AutoSize = true;
+            this.lblVersionNumber.Location = new System.Drawing.Point(422, 284);
+            this.lblVersionNumber.Name = "lblVersionNumber";
+            this.lblVersionNumber.Size = new System.Drawing.Size(150, 15);
+            this.lblVersionNumber.TabIndex = 3;
+            this.lblVersionNumber.Text = "Version Number 1.0.1.253";
+            // 
+            // lblDescription
+            // 
+            this.lblDescription.AllowDrop = true;
+            this.lblDescription.AutoSize = true;
+            this.lblDescription.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDescription.Location = new System.Drawing.Point(19, 76);
+            this.lblDescription.Name = "lblDescription";
+            this.lblDescription.Size = new System.Drawing.Size(463, 100);
+            this.lblDescription.TabIndex = 2;
+            this.lblDescription.Text = "Welcome! This application allows you to enter and\r\nsave up to ten tournament team" +
+    "s with four players\r\neach. Player scores will be ranked and sorted before\r\nbeing" +
+    " used to determine team rankings.";
+            // 
+            // lblTitleCard
+            // 
+            this.lblTitleCard.AutoSize = true;
+            this.lblTitleCard.Font = new System.Drawing.Font("MV Boli", 38F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTitleCard.Location = new System.Drawing.Point(7, 4);
+            this.lblTitleCard.Name = "lblTitleCard";
+            this.lblTitleCard.Size = new System.Drawing.Size(488, 85);
+            this.lblTitleCard.TabIndex = 0;
+            this.lblTitleCard.Text = "Birdie Brackets";
             // 
             // tabCreateTeam
             // 
@@ -138,7 +195,7 @@ namespace CIS353GroupB
             this.tabCreateTeam.Padding = new System.Windows.Forms.Padding(3);
             this.tabCreateTeam.Size = new System.Drawing.Size(558, 300);
             this.tabCreateTeam.TabIndex = 1;
-            this.tabCreateTeam.Text = "Create/Update Team";
+            this.tabCreateTeam.Text = "Manage Teams";
             this.tabCreateTeam.UseVisualStyleBackColor = true;
             // 
             // btnExport
@@ -460,6 +517,26 @@ namespace CIS353GroupB
             this.treeView1.Size = new System.Drawing.Size(552, 294);
             this.treeView1.TabIndex = 0;
             // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = global::CIS353GroupB.Properties.Resources.GolfGreen;
+            this.pictureBox2.Location = new System.Drawing.Point(94, 159);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(328, 135);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox2.TabIndex = 6;
+            this.pictureBox2.TabStop = false;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::CIS353GroupB.Properties.Resources.BallandTee;
+            this.pictureBox1.Location = new System.Drawing.Point(405, 6);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(150, 150);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 5;
+            this.pictureBox1.TabStop = false;
+            // 
             // GolfLeague_Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -470,9 +547,13 @@ namespace CIS353GroupB
             this.Text = "Golf League";
             this.Load += new System.EventHandler(this.GolfLeague_Form_Load);
             this.Tab_Control.ResumeLayout(false);
+            this.tabWelcome.ResumeLayout(false);
+            this.tabWelcome.PerformLayout();
             this.tabCreateTeam.ResumeLayout(false);
             this.tabCreateTeam.PerformLayout();
             this.tabDisplayTeam.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -519,5 +600,11 @@ namespace CIS353GroupB
         private System.Windows.Forms.Button btnClear;
         private System.Windows.Forms.Button btnExport;
         private System.Windows.Forms.TreeView treeView1;
+        private System.Windows.Forms.Label lblTitleCard;
+        private System.Windows.Forms.Label lblDeveloperCredit;
+        private System.Windows.Forms.Label lblVersionNumber;
+        private System.Windows.Forms.Label lblDescription;
+        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }
