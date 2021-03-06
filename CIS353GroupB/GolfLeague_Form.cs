@@ -12,7 +12,6 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 using System.Text.RegularExpressions;
-using System.Xml.Serialization;
 using System.IO;
 using System.Linq;
 using System.Diagnostics;
@@ -24,12 +23,14 @@ namespace CIS353GroupB
         // holds current list of teams in the league
         private List<Team> teams = new List<Team>();
 
+        //boolean to determin if this is the first load of program
+        private bool firstAppStart = true;
+
         // File dialog to import files from file system
         OpenFileDialog openFileDialog1 = new OpenFileDialog
         {
             InitialDirectory = AppDomain.CurrentDomain.BaseDirectory //opens filedialog at application root
         };
-
         public GolfLeague_Form()
         {
             InitializeComponent();
@@ -49,8 +50,8 @@ namespace CIS353GroupB
             cboxTeams.Items.Clear();
             // disable buttons until team is selected
             btnUpdate.Enabled = false;
-            btnImport.Enabled = false;
-            btnExport.Enabled = false;
+            //btnImport.Enabled = false;
+            //btnExport.Enabled = false;
             btnDelete.Enabled = false;
             // Clear old values from team update tab
             clearTeamUpdate();
@@ -79,13 +80,17 @@ namespace CIS353GroupB
                 Team selectedTeam = teams[cboxTeams.SelectedIndex];
                 btnUpdate.Text = "Update Team";
                 btnDelete.Enabled = true;
-                btnExport.Enabled = true;
+                //btnExport.Enabled = true;
                 populateTeamUpdate(selectedTeam);
+            }
+            else if (cboxTeams.SelectedItem.ToString() == "Add new team")
+            {
+                EnableTextBox();
             }
             // Add a team filled with random data and enable add buttons
             else if (cboxTeams.SelectedItem.ToString() == "Add random team")
             {
-                btnImport.Enabled = true;
+                //btnImport.Enabled = true;
                 btnUpdate.Text = "Add Team";
                 btnDelete.Enabled = false;
 
@@ -120,7 +125,7 @@ namespace CIS353GroupB
             // clear form and enable add buttons
             else
             {
-                btnImport.Enabled = true;
+                //btnImport.Enabled = true;
                 btnUpdate.Text = "Add Team";
                 btnDelete.Enabled = false;
                 clearTeamUpdate();
@@ -165,83 +170,156 @@ namespace CIS353GroupB
             {
                 t.Text = "";
             }
+            DisableTextBox();
         }
-        private void SaveTeams(Team team)
+        private void SaveTeams()
         {
             // save/append? team to file - single file??
-            FileStream outFile = new FileStream("teams.txt", FileMode.Append, FileAccess.Write, FileShare.ReadWrite);
-            using (StreamWriter writer = new StreamWriter(outFile))
+            using (SaveFileDialog saveFileDialog1 = new SaveFileDialog { InitialDirectory = AppDomain.CurrentDomain.BaseDirectory })
             {
-                writer.WriteLine(team.ToString() + "\n");
+                if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+                {
+                    string fileName = saveFileDialog1.FileName;
+                    if (string.IsNullOrEmpty(fileName))
+                    {
+                        MessageBox.Show("Invalid File Name", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    else
+                    {
+                        FileStream outFile = new FileStream(fileName, FileMode.Create, FileAccess.Write, FileShare.ReadWrite);
+                        StreamWriter writer = new StreamWriter(outFile);
+                        try
+                        {
+                            
+                            foreach (Team team in teams)
+                            {
+                                writer.WriteLine(team.ToString() + "\n");
+                            }
+                        }
+                        catch (IOException)
+                        {
+                            MessageBox.Show("Error Writing to File", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                        catch (FormatException)
+                        {
+                            MessageBox.Show("Invalid Format", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                        finally
+                        {
+                            writer.Close();
+                            outFile.Close();
+                        }
+                    }
+                }
             }
         }
         private void LoadTeams()
         {
             //need to take the teams.txt file and move it into the tree view append teams.
             // turn each team into object, then append object to "teams" list. finally, update treview with method.
-            if (File.Exists("teams.txt"))
+            teams = new List<Team>();
+            string fileName;
+            DialogResult result;
+            using (openFileDialog1)
             {
-                //var teams = new List<Team>(); // create list to hold teams in text file
-
-                FileStream inFile = new FileStream("teams.txt", FileMode.OpenOrCreate, FileAccess.Read, FileShare.Read);
-                using (StreamReader reader = new StreamReader(inFile))
+                if (firstAppStart)
                 {
-                    string line;
-                    int index = 0; // runs through and keeps track of teams outside of the lines will always be 0-4
-                    int lnumber = 0;
-                    int t = 0; //to help add new team objects to team list
-
-                    while ((line = reader.ReadLine()) != null)
+                    result = DialogResult.OK;
+                    fileName = "teams.txt";
+                }
+                else
+                {
+                    result = openFileDialog1.ShowDialog();
+                    fileName = openFileDialog1.FileName;
+                }
+            }
+            if (result == DialogResult.OK)
+            {
+                if (string.IsNullOrEmpty(fileName))
+                {
+                    MessageBox.Show("Invalid File Name", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else
+                {
+                    FileStream inFile = new FileStream(fileName, FileMode.Open, FileAccess.Read, FileShare.Read);
+                    StreamReader reader = new StreamReader(inFile);
+                    try
                     {
-                        // need to make some assumptions about the text file this information is in.
-                        // each object will be 5 lines followed by a blank line.
-                        // line 1 is team name and rank
-                        // each line, 2-4, will contain a full player object.
+                        
+                        //var teams = new List<Team>(); // create list to hold teams in text file
+                        string line;
+                        int index = 0; // runs through and keeps track of teams outside of the lines will always be 0-4
+                        int lnumber = 0;
+                        int t = 0; //to help add new team objects to team list
 
-                        if (index >= 0 && index < 5)
+                        while ((line = reader.ReadLine()) != null)
                         {
+                            // need to make some assumptions about the text file this information is in.
+                            // each object will be 5 lines followed by a blank line.
+                            // line 1 is team name and rank
+                            // each line, 2-4, will contain a full player object.
 
-                            switch (index)
+                            if (index >= 0 && index < 5)
                             {
-                                case (0):
-                                    teams.Add(new Team());
-                                    teams[t].Name = line.Split(',')[0];
-                                    break;
-                                case (1):
-                                    Player Player1 = new Player(line);
-                                    teams[t].updatePlayer(Player1, 0);
-                                    break;
-                                case (2):
-                                    Player Player2 = new Player(line);
-                                    teams[t].updatePlayer(Player2, 1);
-                                    break;
-                                case (3):
-                                    Player Player3 = new Player(line);
-                                    teams[t].updatePlayer(Player3, 2);
-                                    break;
-                                case (4):
-                                    Player Player4 = new Player(line);
-                                    teams[t].updatePlayer(Player4, 3);
-                                    teams[t].Sort();
-                                    teams[t].CalculateTeamScore();
-                                    //teams.Add(teams[t]);
-                                    //populateTeams(); maybe do this last
-                                    break;
-                                default:
-                                    break;
-                            }
-                        }
-                        else
-                        {
-                            index = -1;
-                            t++;
-                        }
 
-                        lnumber++;
-                        index++;
+                                switch (index)
+                                {
+                                    case (0):
+                                        teams.Add(new Team());
+                                        teams[t].Name = line.Split(',')[0];
+                                        break;
+                                    case (1):
+                                        Player Player1 = new Player(line);
+                                        teams[t].updatePlayer(Player1, 0);
+                                        break;
+                                    case (2):
+                                        Player Player2 = new Player(line);
+                                        teams[t].updatePlayer(Player2, 1);
+                                        break;
+                                    case (3):
+                                        Player Player3 = new Player(line);
+                                        teams[t].updatePlayer(Player3, 2);
+                                        break;
+                                    case (4):
+                                        Player Player4 = new Player(line);
+                                        teams[t].updatePlayer(Player4, 3);
+                                        teams[t].Sort();
+                                        teams[t].CalculateTeamScore();
+                                        //teams.Add(teams[t]);
+                                        //populateTeams(); maybe do this last
+                                        break;
+                                    default:
+                                        break;
+                                }
+                            }
+                            else
+                            {
+                                index = -1;
+                                t++;
+                            }
+                            lnumber++;
+                            index++;
+                        }
+                    }
+                    catch (IOException)
+                    {
+                        MessageBox.Show("Error reading from file", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    finally
+                    {
+                        reader.Close();
+                        inFile.Close();
+                    }
+                    populateTeams();
+                    if (firstAppStart)
+                    {
+                        firstAppStart = false;
+                    }
+                    else
+                    {
+                        Tab_Control.SelectedIndex = 2;
                     }
                 }
-                populateTeams();
             }
         }
         // Handles the update/Add button
@@ -311,81 +389,14 @@ namespace CIS353GroupB
         private void btnImport_Click( object sender, EventArgs e )
         {
             // Import dialog box
-            if (openFileDialog1.ShowDialog() == DialogResult.OK)
-            {
-                string file = openFileDialog1.FileName;
-
-                FileStream inFile = new FileStream(file, FileMode.OpenOrCreate, FileAccess.Read, FileShare.Read);
-                try
-                {
-                    using (StreamReader reader = new StreamReader(inFile))
-                    {
-                        string line;
-                        int lnumber = 0;
-                        while ((line = reader.ReadLine()) != null)
-                        {
-
-                            // pull in a single team from a csv, assumes only 4 team members
-                            switch (lnumber)
-                            {
-                                case (0):
-                                    txtTeamName.Text = line.Split(',')[0];
-                                    txtTeamRank.Text = line.Split(',')[1];
-                                    break;
-
-                                case (1):
-                                    txtG1FName.Text = line.Split(',')[0];
-                                    txtG1LName.Text = line.Split(',')[1];
-                                    txtG1Handicap.Text = line.Split(',')[2];
-                                    txtG1GameScore.Text = line.Split(',')[3];
-                                    txtG1Rank.Text = line.Split(',')[4];
-                                    break;
-
-                                case (2):
-                                    txtG2FName.Text = line.Split(',')[0];
-                                    txtG2LName.Text = line.Split(',')[1];
-                                    txtG2Handicap.Text = line.Split(',')[2];
-                                    txtG2GameScore.Text = line.Split(',')[3];
-                                    txtG2Rank.Text = line.Split(',')[4];
-                                    break;
-
-                                case (3):
-                                    txtG3FName.Text = line.Split(',')[0];
-                                    txtG3LName.Text = line.Split(',')[1];
-                                    txtG3Handicap.Text = line.Split(',')[2];
-                                    txtG3GameScore.Text = line.Split(',')[3];
-                                    txtG3Rank.Text = line.Split(',')[4];
-                                    break;
-
-                                case (4):
-                                    txtG4FName.Text = line.Split(',')[0];
-                                    txtG4LName.Text = line.Split(',')[1];
-                                    txtG4Handicap.Text = line.Split(',')[2];
-                                    txtG4GameScore.Text = line.Split(',')[3];
-                                    txtG4Rank.Text = line.Split(',')[4];
-                                    break;
-
-                                default:
-                                    break;
-
-                            }
-
-                            lnumber++;
-                        }
-                    }
-                }
-                catch
-                {
-
-                }
-            }
+            LoadTeams();
         }
         // handles export button
         private void btnExport_Click( object sender, EventArgs e )
         {
-            SaveTeams(teams[cboxTeams.SelectedIndex]);
-            
-            MessageBox.Show(teams[cboxTeams.SelectedIndex].ToString());
+            SaveTeams();
+            //SaveTeams(teams[cboxTeams.SelectedIndex]);
+            //MessageBox.Show(teams[cboxTeams.SelectedIndex].ToString());
         }
         // Populates the tree view
         private void populateTreeView()
@@ -429,7 +440,49 @@ namespace CIS353GroupB
                 e.Handled = true;
             }
         }
-
+        private void EnableTextBox()
+        {
+            Regex editableTextBox = new Regex("[a-z0-9]*Rank$");
+            foreach (TextBox t in tabCreateTeam.Controls.OfType<TextBox>())
+            {
+                if (!editableTextBox.IsMatch(t.Name) || t.Name == "txtTeamRank")
+                    t.Enabled = true;
+            }
+        }
+        private void DisableTextBox()
+        {
+            Regex editableTextBox = new Regex("[a-z0-9]*Rank$");
+            foreach (TextBox t in tabCreateTeam.Controls.OfType<TextBox>())
+            {
+                if (!editableTextBox.IsMatch(t.Name) || t.Name == "txtTeamRank")
+                    t.Enabled = false;
+            }
+        }
+        private void PersistTeams()
+        {
+            FileStream outFile = new FileStream("teams.txt", FileMode.Create, FileAccess.Write, FileShare.ReadWrite);
+            StreamWriter writer = new StreamWriter(outFile);
+            try
+            {
+                foreach (Team team in teams)
+                {
+                    writer.WriteLine(team.ToString() + "\n");
+                }
+            }
+            catch (IOException)
+            {
+                MessageBox.Show("Error Writing to File", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (FormatException)
+            {
+                MessageBox.Show("Invalid Format", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                writer.Close();
+                outFile.Close();
+            }
+        }
         private void GolfLeague_Form_Load(object sender, EventArgs e)
         {
             LoadTeams();
