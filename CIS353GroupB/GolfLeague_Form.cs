@@ -82,6 +82,7 @@ namespace CIS353GroupB
                 btnDelete.Enabled = true;
                 //btnExport.Enabled = true;
                 populateTeamUpdate(selectedTeam);
+                EnableTextBox();
             }
             else if (cboxTeams.SelectedItem.ToString() == "Add new team")
             {
@@ -225,7 +226,10 @@ namespace CIS353GroupB
                 if (firstAppStart)
                 {
                     result = DialogResult.OK;
-                    fileName = "teams.txt";
+                    if (!File.Exists("teams.txt"))
+                        fileName = "";
+                    else
+                        fileName = "teams.txt";
                 }
                 else
                 {
@@ -237,10 +241,15 @@ namespace CIS353GroupB
             {
                 if (string.IsNullOrEmpty(fileName))
                 {
-                    MessageBox.Show("Invalid File Name", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    if (firstAppStart)
+                        fileName = "";
+                    else
+                        MessageBox.Show("Invalid File Name", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 else
                 {
+                    
+                        
                     FileStream inFile = new FileStream(fileName, FileMode.Open, FileAccess.Read, FileShare.Read);
                     StreamReader reader = new StreamReader(inFile);
                     try
